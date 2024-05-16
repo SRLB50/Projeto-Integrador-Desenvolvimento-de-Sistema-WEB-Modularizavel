@@ -23,34 +23,91 @@
           <li><strong><a href="https://www.w3schools.com/">W3schools</a></strong>, https://www.w3schools.com/ acessado em 5/09/22.</li>
           <li><strong>Para baixar este projeto no <a href="https://github.com/guibressane/projetointegrador">Github</a></strong>, https://github.com/guibressane/projetointegrador</li>
 
-Configurações do banco no arquivo knexfile.js
+# Projeto Integrador - 1ª Entrega: Proposta de Aplicação Web no Contexto da Saúde Humana
 
-## :gear: Configurando o projeto 
-```bash
+## Introdução
+A crescente demanda por soluções tecnológicas na área da saúde oferece uma oportunidade única para desenvolver uma aplicação web que possa melhorar a qualidade de vida das pessoas, facilitar o acesso a informações de saúde e otimizar o atendimento médico. Nossa proposta se insere neste contexto, buscando atender uma necessidade real com uma abordagem inovadora.
 
-# Instale todas as dependências
-$ npm i
+## Visão de Produto
 
-# Instale o knex globalmente
-$ npm i knex -g
+### Público-Alvo
+O público-alvo da nossa aplicação web são mulheres de todas as idades que buscam informações e suporte sobre saúde feminina. Este grupo inclui adolescentes, mulheres adultas, e idosas, com ênfase especial em mulheres grávidas e aquelas que estão na menopausa.
 
-# Altere o password de acordo com sua senha no DB localhost no knexfile
-$ knexfile.js
+### Dificuldade Apresentada
+Muitas mulheres enfrentam dificuldades em obter informações confiáveis e personalizadas sobre sua saúde. Existem lacunas significativas no acompanhamento contínuo de condições específicas, como saúde menstrual, gravidez e menopausa.
 
-# Crie um schema no MySQL chamado "project" (sem aspas)
+### Missão do Aplicativo Web
+A missão do nosso aplicativo é empoderar mulheres com informações precisas, personalizadas e acessíveis sobre saúde feminina, promovendo bem-estar e prevenindo doenças através de um acompanhamento contínuo e integrado.
 
-# Cria todas as tabelas do banco de dados
-$ knex migrate:latest
+### Benefícios Gerados
+- **Informações Personalizadas**: Conteúdos e dicas específicas para cada fase da vida feminina.
+- **Acompanhamento Contínuo**: Monitoramento de saúde menstrual, gravidez e menopausa.
+- **Acesso Fácil a Especialistas**: Conexão com profissionais de saúde para consultas virtuais.
+- **Comunidade de Suporte**: Fórum de discussão e grupos de apoio entre usuárias.
 
-# Inicie o modo de desenvolvimento
-$ npm run dev
+### Diferencial Entre Propostas Concorrentes
+Nosso diferencial é a personalização do conteúdo com base nos dados inseridos pela usuária, a integração de várias fases da saúde feminina em uma única plataforma e a oferta de suporte comunitário, criando um ambiente de suporte contínuo e abrangente.
 
-# Abra o arquivo na pasta layout
-$ index.html
-```
+## Descrição de Personas
 
-## :computer: Tecnologias
+### Persona 1: Júlia, 25 anos
+- **Idade**: 25 anos
+- **Profissão**: Estudante de Medicina
+- **Comportamento**: Usuária assídua de tecnologia, busca informações sobre saúde menstrual.
+- **Necessidades**: Acompanhar seu ciclo menstrual e receber dicas de saúde reprodutiva.
+- **Objetivos**: Manter-se informada e saudável durante sua rotina agitada de estudos.
 
-- [Node.js](https://nodejs.org/en/)
-- [Express](https://www.npmjs.com/package/express) 
-- [Mysql2](https://www.npmjs.com/package/mysql2)
+### Persona 2: Maria, 35 anos
+- **Idade**: 35 anos
+- **Profissão**: Engenheira
+- **Comportamento**: Trabalhadora dedicada com pouco tempo para cuidar da saúde.
+- **Necessidades**: Informação sobre cuidados na gravidez e suporte emocional.
+- **Objetivos**: Acompanhar a saúde durante a gravidez de maneira prática e rápida.
+
+### Persona 3: Ana, 50 anos
+- **Idade**: 50 anos
+- **Profissão**: Professora
+- **Comportamento**: Está na fase da menopausa e busca informações confiáveis.
+- **Necessidades**: Orientação sobre os sintomas da menopausa e dicas para lidar com eles.
+- **Objetivos**: Gerir os sintomas da menopausa e manter-se ativa e saudável.
+
+## Proposta de Protótipo
+
+Utilizando ferramentas como Figma, desenvolvemos um protótipo funcional que contempla as principais funcionalidades da aplicação:
+
+- **Tela Inicial**: Dashboard com resumo de saúde personalizada.
+- **Seção Menstrual**: Calendário menstrual com dicas diárias.
+- **Seção Gravidez**: Acompanhamento semanal da gravidez com vídeos educativos.
+- **Seção Menopausa**: Artigos e fóruns de discussão sobre menopausa.
+- **Consultas Virtuais**: Agenda para marcar consultas com especialistas.
+- **Comunidade**: Fóruns e grupos de suporte.
+
+## Objetivos e Observações
+
+### Objetivos
+- **Integrar Conhecimento Acadêmico**: Aplicar teorias de saúde feminina em um contexto prático.
+- **Desenvolver uma Solução Prática**: Criar uma aplicação funcional que atenda às necessidades reais das usuárias.
+- **Promover Saúde Preventiva**: Incentivar práticas de saúde preventiva através de informações acessíveis.
+
+### Observações
+- **Usabilidade**: O design da interface deve ser intuitivo e fácil de usar, garantindo que todas as funcionalidades sejam acessíveis mesmo para usuárias com pouca experiência em tecnologia.
+- **Segurança dos Dados**: Garantir a privacidade e a segurança das informações pessoais das usuárias.
+
+## Jornada do Usuário
+
+### Definição
+A jornada do usuário descreve as etapas que um usuário percorre ao interagir com a aplicação, desde o primeiro contato até a utilização contínua.
+
+### Exemplo de Jornada: Júlia
+1. **Descoberta**: Júlia encontra a aplicação através de uma recomendação no Instagram.
+2. **Inscrição**: Baixa a aplicação e cria seu perfil, fornecendo dados sobre seu ciclo menstrual.
+3. **Utilização Inicial**: Júlia navega pelo dashboard e começa a usar o calendário menstrual.
+4. **Interação Contínua**: Júlia recebe notificações diárias com dicas de saúde e acompanha seu ciclo.
+5. **Engajamento**: Participa de fóruns de discussão e marca consultas virtuais com ginecologistas.
+
+## Oportunidades
+A aplicação pode ser expandida para incluir funcionalidades adicionais, como integração com dispositivos de saúde (wearables), parcerias com clínicas de saúde feminina e a criação de conteúdo educativo em formato de vídeo.
+
+## Conclusão
+Nossa proposta de aplicação web para saúde feminina visa preencher uma lacuna significativa no mercado, oferecendo um serviço personalizado e contínuo que abrange diversas fases da vida das mulheres. Com um foco em usabilidade, segurança dos dados e suporte comunitário, acreditamos que a aplicação poderá ter um impacto positivo e duradouro na saúde das usuárias. A proposta apresentada busca não apenas solucionar um problema específico, mas também proporcionar um ambiente acolhedor e informativo, onde as mulheres podem se sentir apoiadas e informadas sobre sua saúde em todas as fases da vida.
+
