@@ -14,12 +14,6 @@
     <li>SANDRA REGINA LOPES BALBINO</li>
 </ul>
 
-<h4>Referências de pesquisa para execução do projeto:</h4>
-          <ul>
-          <li><strong>SANTIAGO</strong>, Jefferson. Título: Web Standards. Editora Senac, São Paulo, 2016.</li>
-          <li><strong><a href="https://getbootstrap.com/">Bootstrap</a></strong>, https://getbootstrap.com/ acessado em __/__/2024.</li>
-          <li><strong><a href="https://www.w3schools.com/">W3schools</a></strong>, https://www.w3schools.com/ acessado em __/__/2024.</li>
-          <li><strong>Para baixar este projeto no <a href="https://github.com/SRLB50/Projeto-Integrador---Desenvolvimento-de-Sistema-WEB-Modulariz-vel">Github</a></strong>, https://github.com/SRLB50/Projeto-Integrador---Desenvolvimento-de-Sistema-WEB-Modulariz-vel</li>
 
 # Projeto Integrador - 1ª Entrega: Proposta de Aplicação Web no Contexto da Saúde Humana
 
@@ -108,4 +102,12 @@ A aplicação pode ser expandida para incluir funcionalidades adicionais, como i
 
 ## Conclusão
 Nossa proposta de aplicação web para saúde feminina visa preencher uma lacuna significativa no mercado, oferecendo um serviço personalizado e contínuo que abrange diversas fases da vida das mulheres. Com um foco em usabilidade, segurança dos dados e suporte comunitário, acreditamos que a aplicação poderá ter um impacto positivo e duradouro na saúde das usuárias. A proposta apresentada busca não apenas solucionar um problema específico, mas também proporcionar um ambiente acolhedor e informativo, onde as mulheres podem se sentir apoiadas e informadas sobre sua saúde em todas as fases da vida.
+
+
+<h4>Referências de pesquisa para execução do projeto:</h4>
+          <ul>
+          <li><strong>SANTIAGO</strong>, Jefferson. Título: Web Standards. Editora Senac, São Paulo, 2016.</li>
+          <li><strong><a href="https://getbootstrap.com/">Bootstrap</a></strong>, https://getbootstrap.com/ acessado em __/__/2024.</li>
+          <li><strong><a href="https://www.w3schools.com/">W3schools</a></strong>, https://www.w3schools.com/ acessado em __/__/2024.</li>
+          <li><strong>Para baixar este projeto no <a href="https://github.com/SRLB50/Projeto-Integrador---Desenvolvimento-de-Sistema-WEB-Modulariz-vel">Github</a></strong>, https://github.com/SRLB50/Projeto-Integrador---Desenvolvimento-de-Sistema-WEB-Modulariz-vel</li>
 
