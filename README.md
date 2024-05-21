@@ -18,18 +18,18 @@
 # Projeto Integrador - 1ª Entrega: Proposta de Aplicação Web no Contexto da Saúde Humana
 
 ## Introdução
-A crescente demanda por soluções tecnológicas na área da saúde oferece uma oportunidade única para desenvolver uma aplicação web que possa melhorar a qualidade de vida das pessoas, facilitar o acesso a informações de saúde e otimizar o atendimento médico. Nossa proposta se insere neste contexto, buscando atender uma necessidade real com uma abordagem inovadora.
+A demanda crescente por soluções tecnológicas na área da saúde humana oferece uma oportunidade única para o desenvolvimento de uma aplicação web que possa melhorar a qualidade de vida das pessoas, facilitando e otimizando o acesso a informações sobre saúde e o atendimento médico. Em nossa proposta, buscamos inserir neste contexto o atendimento das necessidades reais com uma abordagem inovadora.
 
 ## Visão de Produto
 
 ### Público-Alvo
-O público-alvo da nossa aplicação web são mulheres de todas as idades que buscam informações e suporte sobre saúde feminina. Este grupo inclui adolescentes, mulheres adultas, e idosas, com ênfase especial em mulheres grávidas e aquelas que estão na menopausa.
+O público-alvo da nossa aplicação web são mulheres de todas as idades que buscam informações e suporte sobre a saúde feminina.Neste grupo, procuramos incluir adolescentes, mulheres adultas e idosas, com ênfase especial às mulheres grávidas e aquelas que estão no climatério e menopausa.
 
 ### Dificuldade Apresentada
-Muitas mulheres enfrentam dificuldades em obter informações confiáveis e personalizadas sobre sua saúde. Existem lacunas significativas no acompanhamento contínuo de condições específicas, como saúde menstrual, gravidez e menopausa.
+Muitas mulheres encontram grandes dificuldades não só em obter informações confiáveis e personalizadas sobre a sua saúde de qualidade, como também de forma rápida e ágil, sem filas ou demoradas. Existem lacunas significativas no acompanhamento contínuo de condições específicas, como saúde menstrual, prevenção, gravidez, climatério e menopausa.
 
 ### Missão do Aplicativo Web
-A missão do nosso aplicativo é empoderar mulheres com informações precisas, personalizadas e acessíveis sobre saúde feminina, promovendo bem-estar e prevenindo doenças através de um acompanhamento contínuo e integrado.
+A missão do nosso aplicativo é empoderar essas mulheres com informações precisas, personalizadas e acessíveis sobre a sua saúde feminina, promovendo bem-estar e prevenindo doenças através de um acompanhamento contínuo e integrado.
 
 ### Benefícios Gerados
 - **Informações Personalizadas**: Conteúdos e dicas específicas para cada fase da vida feminina.
