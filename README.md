@@ -64,14 +64,14 @@
 - **Profissão**: Engenheira
 - **Comportamento**: Trabalhadora dedicada com pouco tempo para cuidar da saúde.
 - **Necessidades**: Informação sobre cuidados e de contracepção .
-- **Objetivos**: Acompanhar a saúde durante a gravidez de maneira prática e rápida.
+- **Objetivos**: Acompanhar a saúde de maneira prática e rápida.
 
 ### Persona 3: Ana Guedes de Souza
 - **Idade**: 38 anos
 - **Profissão**: Professora
 - **Comportamento**: Está tentando engravidar pela quinta vez com grande dificuldade, sem filhos.
 - **Necessidades**: informações e apoio online para entender melhor sua situação e explorar possíveis soluções.
-- **Objetivos**: Gerir os sintomas da menopausa e manter-se ativa e saudável.
+- **Objetivos**: Gerir os exames e acompanhamentos clínicos e manter-se e saudável.
 
 ## Proposta de Protótipo
 
