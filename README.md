@@ -113,9 +113,5 @@
 <p align="justify">Nossa proposta de aplicação web para saúde feminina visa atender a uma necessidade crescente no mercado, oferecendo um serviço abrangente e personalizado que acompanha as diferentes fases da vida menstrual e da gravidez das mulheres. Com foco na facilidade de uso, segurança dos dados e apoio da comunidade, acreditamos que a aplicação pode ter um impacto positivo e duradouro na saúde das usuárias. A proposta apresentada busca não apenas resolver problemas específicos, mas também criar um ambiente acolhedor e informativo, onde as mulheres se sintam apoiadas e bem informadas sobre sua saúde durante essas importantes fases da vida.
 
 
-<h4>Referências de pesquisa para execução do projeto:</h4>
-          <ul>
-          <li><strong><a href="https://getbootstrap.com/">Bootstrap</a></strong>, https://getbootstrap.com/ acessado em __/__/2024.</li>
-          <li><strong><a href="https://www.w3schools.com/">W3schools</a></strong>, https://www.w3schools.com/ acessado em __/__/2024.</li>
-          <li><strong>Para baixar este projeto no <a href="https://github.com/SRLB50/Projeto-Integrador---Desenvolvimento-de-Sistema-WEB-Modulariz-vel">Github</a></strong>, https://github.com/SRLB50/Projeto-Integrador---Desenvolvimento-de-Sistema-WEB-Modulariz-vel</li>
+<li><strong>Para baixar este projeto no <a href="https://github.com/SRLB50/Projeto-Integrador---Desenvolvimento-de-Sistema-WEB-Modulariz-vel">Github</a></strong>, https://github.com/SRLB50/Projeto-Integrador---Desenvolvimento-de-Sistema-WEB-Modulariz-vel</li>
 
