@@ -2,6 +2,8 @@
 <h1 align="center">PROJETO INTEGRADOR: DESENVOLVIMENTO DE SISTEMA WEB MODULARIZÁVEL</h1>
 <p align="center">Repertório criado para o PROJETO INTEGRADOR: DESENVOLVIMENTO DE SISTEMA WEB MODULARIZÁVEL do curso de Tecnologia em Sistemas para Internet do <a href="https://ead.senac.br/">Senac</a>. São Paulo, ___/____/2024.</p>
 
+# Projeto Integrador - 1ª Entrega: Proposta de Aplicação Web no Contexto da Saúde Humana
+
 ## Integrantes 
 <ul>
     <li>DAYANE SCHEFFEMACHER TERENCIO</li>
@@ -13,8 +15,8 @@
     <li>MICHEL DE QUADROS KRUGER</li>
     <li>SANDRA REGINA LOPES BALBINO</li>
 </ul>
-___________________________________________________________________________________
 
+## Resumo
 
 <p align="justify">Criada com o objetivo de fornecer informações e apoio quanto à saúde da mulher, nossa  aplicação WEB visa abordar temas como menstruação e gravidez, especificamente. Na página principal apresentaremos uma descrição do projeto, exibindo conteúdos educativos e fornecendo informações gerais. Teremos três links principais: Cadastro, Quero Informações e Login.
     
@@ -24,7 +26,6 @@ ________________________________________________________________________________
 
 <p align="justify">Além disso, o Node.js vai gerenciar as requisições do front-end feito em React, garantindo que a comunicação seja eficiente e segura entre o cliente e o servidor. Essa aplicação oferece uma experiência fluida e integrada para que os usuários tenham informações seguras sobre saúde a feminina.
 
-# Projeto Integrador - 1ª Entrega: Proposta de Aplicação Web no Contexto da Saúde Humana
 
 ## Introdução
 <p align="justify">A  demanda crescente por soluções tecnológicas na área da saúde humana cria uma oportunidade valiosa para o desenvolvimento de uma aplicação web. Essa ferramenta pode significativamente aprimorar a qualidade de vida das pessoas, tornando mais fácil e eficiente o acesso a informações sobre saúde e serviços médicos. Nossa proposta visa abordar essas necessidades de forma inovadora, integrando-as ao contexto atual.
