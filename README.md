@@ -113,7 +113,6 @@
 
 <h4>Referências de pesquisa para execução do projeto:</h4>
           <ul>
-          <li><strong>SANTIAGO</strong>, Jefferson. Título: Web Standards. Editora Senac, São Paulo, 2016.</li>
           <li><strong><a href="https://getbootstrap.com/">Bootstrap</a></strong>, https://getbootstrap.com/ acessado em __/__/2024.</li>
           <li><strong><a href="https://www.w3schools.com/">W3schools</a></strong>, https://www.w3schools.com/ acessado em __/__/2024.</li>
           <li><strong>Para baixar este projeto no <a href="https://github.com/SRLB50/Projeto-Integrador---Desenvolvimento-de-Sistema-WEB-Modulariz-vel">Github</a></strong>, https://github.com/SRLB50/Projeto-Integrador---Desenvolvimento-de-Sistema-WEB-Modulariz-vel</li>
