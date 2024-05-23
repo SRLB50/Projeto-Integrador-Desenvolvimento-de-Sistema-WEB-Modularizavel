@@ -13,6 +13,7 @@
     <li>MICHEL DE QUADROS KRUGER</li>
     <li>SANDRA REGINA LOPES BALBINO</li>
 </ul>
+___________________________________________________________________________________
 
 
 <p align="justify">Criada com o objetivo de fornecer informações e apoio quanto à saúde da mulher, nossa  aplicação WEB visa abordar temas como menstruação e gravidez, especificamente. Na página principal apresentaremos uma descrição do projeto, exibindo conteúdos educativos e fornecendo informações gerais. Teremos três links principais: Cadastro, Quero Informações e Login.
