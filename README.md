@@ -2,6 +2,14 @@
 <h1 align="center">PROJETO INTEGRADOR: DESENVOLVIMENTO DE SISTEMA WEB MODULARIZÁVEL</h1>
 <p align="center">Repertório criado para o PROJETO INTEGRADOR: DESENVOLVIMENTO DE SISTEMA WEB MODULARIZÁVEL do curso de Tecnologia em Sistemas para Internet do <a href="https://ead.senac.br/">Senac</a>. São Paulo, ___/____/2024.</p>
 
+<h1 align="justify">Criada com o objetivo de fornecer informações e apoio quanto à saúde da mulher, nossa  aplicação WEB visa abordar temas como menstruação e gravidez, especificamente. Na página principal apresentaremos uma descrição do projeto, exibindo conteúdos educativos e fornecendo informações gerais. Teremos três links principais: Cadastro, Quero Informações e Login.
+    
+O front-end da aplicação foi desenvolvido utilizando React, que proporciona uma interface dinâmica e responsiva para os usuários. Implementamos o Node.js como back-end para gerenciar o banco de dados e lidar com a lógica do servidor. O banco de dados utilizado é SQL para armazenar todas as informações dos usuários e conteúdos de forma estruturada.
+
+A integração entre essas tecnologias vai nos permitir realizar operações de cadastro e exclusão de usuários e conteúdos. O back-end em Node.js deverá verificar se um usuário já está registrado antes de permitir um novo cadastro, exibindo uma mensagem de erro caso já esteja cadastrado no sistema.
+
+Além disso, o Node.js vai gerenciar as requisições do front-end feito em React, garantindo que a comunicação seja eficiente e segura entre o cliente e o servidor. Essa aplicação oferece uma experiência fluida e integrada para que os usuários tenham informações seguras sobre saúde a feminina.
+
 ## Integrantes 
 <ul>
     <li>DAYANE SCHEFFEMACHER TERENCIO</li>
@@ -18,7 +26,7 @@
 # Projeto Integrador - 1ª Entrega: Proposta de Aplicação Web no Contexto da Saúde Humana
 
 ## Introdução
-A demanda crescente por soluções tecnológicas na área da saúde humana oferece uma oportunidade única para o desenvolvimento de uma aplicação web que possa melhorar a qualidade de vida das pessoas, facilitando e otimizando o acesso a informações sobre saúde e o atendimento médico. Em nossa proposta, buscamos inserir neste contexto o atendimento das necessidades reais com uma abordagem inovadora.
+A  demanda crescente por soluções tecnológicas na área da saúde humana cria uma oportunidade valiosa para o desenvolvimento de uma aplicação web. Essa ferramenta pode significativamente aprimorar a qualidade de vida das pessoas, tornando mais fácil e eficiente o acesso a informações sobre saúde e serviços médicos. Nossa proposta visa abordar essas necessidades de forma inovadora, integrando-as ao contexto atual.
 
 ## Visão de Produto
 
