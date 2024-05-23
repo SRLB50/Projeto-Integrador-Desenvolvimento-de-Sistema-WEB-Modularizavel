@@ -31,17 +31,17 @@
 ## Visão de Produto
 
 ### Público-Alvo
-<p align="justify">O público-alvo da nossa aplicação web são mulheres de todas as idades que buscam informações e suporte sobre a saúde feminina.Neste grupo, procuramos incluir adolescentes, mulheres adultas e idosas, com ênfase especial às mulheres grávidas e aquelas que estão no climatério e menopausa.
+<p align="justify">O público-alvo da nossa aplicação web são mulheres com idades de período fértil que buscam informações e suporte sobre a saúde feminina. Neste grupo, procuramos incluir adolescentes e mulheres adultas, com ênfase especial aos períodos menstruais e à gestação.
 
 ### Dificuldade Apresentada
-<p align="justify">Muitas mulheres encontram grandes dificuldades não só em obter informações confiáveis e personalizadas sobre a sua saúde de qualidade, como também de forma rápida e ágil, sem filas ou demoradas. Existem lacunas significativas no acompanhamento contínuo de condições específicas, como saúde menstrual, prevenção, gravidez, climatério e menopausa.
+<p align="justify">Muitas mulheres encontram grandes dificuldades não só em obter informações confiáveis e personalizadas sobre a sua saúde com qualidade, como também de forma rápida e ágil, sem filas ou soluções demoradas, lentas. Existem lacunas significativas no acompanhamento contínuo de condições específicas, como saúde menstrual, prevenção e gravidez.
 
 ### Missão do Aplicativo Web
-<p align="justify">A missão do nosso aplicativo é empoderar essas mulheres com informações precisas, personalizadas e acessíveis sobre a sua saúde feminina, promovendo bem-estar e prevenindo doenças através de um acompanhamento contínuo e integrado.
+<p align="justify">A missão do nosso aplicativo é empoderar essas mulheres com informações precisas, personalizadas e acessíveis sobre a sua saúde feminina, promovendo bem-estar através de um acompanhamento contínuo e integrado.
 
 ### Benefícios Gerados
-- **Informações Personalizadas**: Conteúdos e dicas específicas para cada fase da vida feminina.
-- **Acompanhamento Contínuo**: Monitoramento de saúde menstrual, gravidez e menopausa.
+- **Informações Personalizadas**: Conteúdos e dicas específicas para a fase menstrual e na gravidez.
+- **Acompanhamento Contínuo**: Monitoramento de saúde menstrual e gravidez.
 - **Acesso Fácil a Especialistas**: Conexão com profissionais de saúde para consultas virtuais.
 - **Comunidade de Suporte**: Fórum de discussão e grupos de apoio entre usuárias.
 
@@ -50,35 +50,34 @@
 
 ## Descrição de Personas
 
-### Persona 1: Júlia, 25 anos
-- **Idade**: 25 anos
-- **Profissão**: Estudante de Medicina
+### Persona 1: Júlia Amorim
+- **Idade**: 17 anos
+- **Profissão**: Estudante de Ensino Médio
 - **Comportamento**: Usuária assídua de tecnologia, busca informações sobre saúde menstrual.
-- **Necessidades**: Acompanhar seu ciclo menstrual e receber dicas de saúde reprodutiva.
+- **Necessidades**: Acompanhar seu ciclo menstrual e receber dicas de saúde.
 - **Objetivos**: Manter-se informada e saudável durante sua rotina agitada de estudos.
 
-### Persona 2: Maria, 35 anos
-- **Idade**: 35 anos
+### Persona 2: Maria da Silva
+- **Idade**: 27 anos
 - **Profissão**: Engenheira
 - **Comportamento**: Trabalhadora dedicada com pouco tempo para cuidar da saúde.
-- **Necessidades**: Informação sobre cuidados na gravidez e suporte emocional.
+- **Necessidades**: Informação sobre cuidados e de contracepção .
 - **Objetivos**: Acompanhar a saúde durante a gravidez de maneira prática e rápida.
 
-### Persona 3: Ana, 50 anos
-- **Idade**: 50 anos
+### Persona 3: Ana Guedes de Souza
+- **Idade**: 38 anos
 - **Profissão**: Professora
-- **Comportamento**: Está na fase da menopausa e busca informações confiáveis.
-- **Necessidades**: Orientação sobre os sintomas da menopausa e dicas para lidar com eles.
+- **Comportamento**: Está tentando engravidar pela quinta vez com grande dificuldade, sem filhos.
+- **Necessidades**: informações e apoio online para entender melhor sua situação e explorar possíveis soluções.
 - **Objetivos**: Gerir os sintomas da menopausa e manter-se ativa e saudável.
 
 ## Proposta de Protótipo
 
 <p align="justify">Utilizando ferramentas como Figma, desenvolvemos um protótipo funcional que contempla as principais funcionalidades da aplicação:
 
-- **Tela Inicial**: Dashboard com resumo de saúde personalizada.
+- **Tela Inicial**: Com resumo de saúde personalizada.
 - **Seção Menstrual**: Calendário menstrual com dicas diárias.
-- **Seção Gravidez**: Acompanhamento semanal da gravidez com vídeos educativos.
-- **Seção Menopausa**: Artigos e fóruns de discussão sobre menopausa.
+- **Seção Gravidez**: Acompanhamento semanal da gravidez com dicas educativas de pré-natal.
 - **Consultas Virtuais**: Agenda para marcar consultas com especialistas.
 - **Comunidade**: Fóruns e grupos de suporte.
 
@@ -109,7 +108,7 @@
 <p align="justify">A aplicação pode ser expandida para incluir funcionalidades adicionais, como integração com dispositivos de saúde (wearables), parcerias com clínicas de saúde feminina e a criação de conteúdo educativo em formato de vídeo.
 
 ## Conclusão
-<p align="justify">Nossa proposta de aplicação web para saúde feminina visa preencher uma lacuna significativa no mercado, oferecendo um serviço personalizado e contínuo que abrange diversas fases da vida das mulheres. Com um foco em usabilidade, segurança dos dados e suporte comunitário, acreditamos que a aplicação poderá ter um impacto positivo e duradouro na saúde das usuárias. A proposta apresentada busca não apenas solucionar um problema específico, mas também proporcionar um ambiente acolhedor e informativo, onde as mulheres podem se sentir apoiadas e informadas sobre sua saúde em todas as fases da vida.
+<p align="justify">Nossa proposta de aplicação web para saúde feminina visa atender a uma necessidade crescente no mercado, oferecendo um serviço abrangente e personalizado que acompanha as diferentes fases da vida menstrual e da gravidez das mulheres. Com foco na facilidade de uso, segurança dos dados e apoio da comunidade, acreditamos que a aplicação pode ter um impacto positivo e duradouro na saúde das usuárias. A proposta apresentada busca não apenas resolver problemas específicos, mas também criar um ambiente acolhedor e informativo, onde as mulheres se sintam apoiadas e bem informadas sobre sua saúde durante essas importantes fases da vida.
 
 
 <h4>Referências de pesquisa para execução do projeto:</h4>
