@@ -52,21 +52,21 @@
 
 ## Descrição de Personas
 
-### Persona 1: Júlia Amorim
+### Persona 1: Júlia Amorim.
 - **Idade**: 17 anos
 - **Profissão**: Estudante de Ensino Médio
 - **Comportamento**: Usuária assídua de tecnologia, busca informações sobre saúde menstrual.
 - **Necessidades**: Acompanhar seu ciclo menstrual e receber dicas de saúde.
 - **Objetivos**: Manter-se informada e saudável durante sua rotina agitada de estudos.
 
-### Persona 2: Alex da Silva
+### Persona 2: Alex da Silva.
 - **Idade**: 27 anos
 - **Profissão**: Designer Gráfico
 - **Comportamento**: Trabalhador dedicado com pouco tempo para cuidar da saúde menstrual.
 - **Necessidades**: Informação sobre cuidados e contracepção .
 - **Objetivos**: Acompanhar a saúde de maneira prática e rápida.
 
-### Persona 3: Ana Guedes de Souza
+### Persona 3: Ana Guedes de Souza. 
 - **Idade**: 38 anos
 - **Profissão**: Professora
 - **Comportamento**: Está tentando engravidar pela quinta vez com grande dificuldade, sem filhos.
