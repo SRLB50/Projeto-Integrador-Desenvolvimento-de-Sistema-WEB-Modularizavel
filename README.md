@@ -39,7 +39,7 @@
 <p align="justify">Muitas pessoas encontram grandes dificuldades não só em obter informações confiáveis, de qualidade e personalizadas sobre a sua saúde, como também de forma rápida e ágil, sem constrangimento ou exclusão. Existem lacunas significativas no acompanhamento contínuo de condições específicas, como saúde menstrual, prevenção e gravidez.
 
 ### Missão do Aplicativo Web
-<p align="justify">A missão do CycleSense é empoderar essas mulheres e indivíduos transgêneros com informações precisas, personalizadas e acessíveis sobre a sua saúde menstrual, promovendo bem-estar através de um acompanhamento contínuo e integrado.
+<p align="justify">A missão do CycleSense é empoderar essas mulheres e indivíduos transgêneros com informações precisas, personalizadas e acessíveis sobre a sua saúde menstrual, promovendo bem-estar através de um acompanhamento contínuo, sensível e integrado.
 
 ### Benefícios Gerados
 - **Informações Personalizadas**: Conteúdos e dicas específicas para a fase menstrual e descoberta da gravidez.
@@ -77,7 +77,7 @@
 
 <p align="justify">Utilizando ferramentas como Figma, desenvolvemos um protótipo funcional que contempla as principais funcionalidades do CycleSense:
 
-- **Tela Inicial**: Dicas com resumo de saúde personalizada, login (usuário e senha), cadastro.
+- **Tela Inicial**: Login (E-mail e Senha), Entrar, Não tem acesso? Cadastre-se.
 - **Seção Menstrual**: Calendário menstrual.
 - **Seção Gravidez**: Grávida ou não.
 - **Comunidade**: Fóruns e grupos de suporte.
