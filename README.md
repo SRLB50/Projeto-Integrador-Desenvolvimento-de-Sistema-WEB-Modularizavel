@@ -1,6 +1,6 @@
 
 <h1 align="center">PROJETO INTEGRADOR: DESENVOLVIMENTO DE SISTEMA WEB MODULARIZÁVEL</h1>
-<p align="center">Repertório criado para o PROJETO INTEGRADOR: DESENVOLVIMENTO DE SISTEMA WEB MODULARIZÁVEL do curso de Tecnologia em Sistemas para Internet do <a href="https://ead.senac.br/">Senac</a>. São Paulo, ___/____/2024.</p>
+<p align="center">Repertório criado para o PROJETO INTEGRADOR: DESENVOLVIMENTO DE SISTEMA WEB MODULARIZÁVEL do curso de Tecnologia em Sistemas para Internet do <a href="https://ead.senac.br/">Senac</a>. São Paulo, 17/06/2024.</p>
 
 # Projeto Integrador - 1ª Entrega: Proposta de Aplicação Web no Contexto da Saúde Humana
 
