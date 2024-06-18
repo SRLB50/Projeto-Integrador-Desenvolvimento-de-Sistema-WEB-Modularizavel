@@ -108,6 +108,80 @@
 ## Oportunidades
 <p align="justify">A aplicação pode ser expandida para incluir funcionalidades adicionais, como integração com dispositivos de saúde (wearables), parcerias com clínicas de saúde feminina e a criação de conteúdo educativo em formato de vídeo.
 
+## Telas do Protótipo
+
+| ![Imagem 1](/assets/imagem1.png)  | ![Imagem 2](assets/imagem2.png)  |
+|      :-------------------------:          |        :-------------------------:       |
+|         **Tela de Login**               |     **Tela de cadastro E-mail**   |
+
+&nbsp;
+
+| ![Imagem 3](/assets/imagem3.png)  | ![Imagem 4](assets/imagem4.png)  |
+|      :-------------------------:          |        :-------------------------:       |
+|   **Tela de cadastro Nome**    |      **Tela de cadastro Sobrenome**      |
+
+&nbsp;
+
+| ![Imagem 5](/assets/imagem5.png)  | ![Imagem 6](assets/imagem6.png)  |
+|      :-------------------------:          |        :-------------------------:       |
+|      **Tela de cadastro Data de Nascimnento**      |        **Tela de cadastro Senha**        |
+
+&nbsp;
+
+| ![Imagem 1](/assets/imagem7.png)  | ![Imagem 2](assets/imagem8.png)  |
+|      :-------------------------:          |        :-------------------------:       |
+|         **Tela de Calendário (menstruação prevista)**               |     **Tela de Calendário (gravidez)**   |
+
+&nbsp;
+
+| ![Imagem 3](/assets/imagem9.png)  | ![Imagem 4](assets/imagem10.png)  |
+|      :-------------------------:          |        :-------------------------:       |
+|   **Tela de Calendário (primeiro dia menstruação)**    |      **Tela de Calendário (menstruação em curso)**      |
+
+&nbsp;
+
+| ![Imagem 5](/assets/imagem11.png)  | ![Imagem 6](assets/imagem12.png)  |
+|      :-------------------------:          |        :-------------------------:       |
+|      **Tela de Calendário (modal alerta de atraso)**      |        **Tela de Calendário (edição de sintomas)**        |
+
+&nbsp;
+
+| ![Imagem 1](/assets/imagem13.png)  | ![Imagem 2](assets/imagem14.png)  |
+|      :-------------------------:          |        :-------------------------:       |
+|         **Tela de Calendário (excluir sintomas)**               |     **Tela de Calendário (modal sugestão de sintomas)**   |
+
+&nbsp;
+
+| ![Imagem 3](/assets/imagem15.png)  | ![Imagem 4](assets/imagem16.png)  |
+|      :-------------------------:          |        :-------------------------:       |
+|   **Tela de Calendário (visualização sintomas)**    |      **Tela de Calendário (modal atraso superior 7 dias)**      |
+
+&nbsp;
+
+| ![Imagem 5](/assets/imagem17.png)  | ![Imagem 6](assets/imagem18.png)  |
+|      :-------------------------:          |        :-------------------------:       |
+|      **Tela de Calendário (primeiro login)**      |        **Tela de Calendário (visualização de sintomas nos dias)**        |
+
+&nbsp;
+
+| ![Imagem 1](/assets/imagem19.png)  | ![Imagem 2](assets/imagem20.png)  |
+|      :-------------------------:          |        :-------------------------:       |
+|         **Tela de Dicas (modo leitura)**               |     **Tela de Dicas (modo leitura)**   |
+
+&nbsp;
+
+| ![Imagem 3](/assets/imagem21.png)  | ![Imagem 4](assets/imagem22.png)  |
+|      :-------------------------:          |        :-------------------------:       |
+|   **Tela de Dicas (modo leitura)**    |      **Tela de Dicas**      |
+
+&nbsp;
+
+| ![Imagem 5](/assets/imagem23.png)  | ![Imagem 6](assets/imagem24.png)  |
+|      :-------------------------:          |        :-------------------------:       |
+|      **Tela Inicial**      |        **Tela Meu Perfil**        |
+
+&nbsp;
+
 ## Conclusão
 <p align="justify">Nossa proposta de aplicação web para saúde menstrual visa atender a uma necessidade crescente no mercado. Oferecendo um serviço abrangente e personalizado que acompanhe as diferentes fases da vida menstrual até a descoberta da gravidez. Com foco na facilidade de uso, segurança de dados e apoio da comunidade, acreditamos que a aplicação pode ter um impacto positivo e duradouro na saúde menstrual das mulheres cisgênero e dos indivíduos transgêneros. A proposta apresentada busca não apenas resolver problemas específicos, mas também criar um ambiente acolhedor e informativo, onde todas as pessoas se sintam apoiadas e bem-informadas sobre sua saúde menstrual durante essas importantes fases da vida.
 
