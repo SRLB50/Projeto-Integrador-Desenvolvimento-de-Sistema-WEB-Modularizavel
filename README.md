@@ -20,7 +20,7 @@
 
 <p align="justify">Criada com o objetivo de fornecer informações e apoio quanto à saúde da menstrual da mulher ou indivíduo transgênero que se identifique como homem, nossa  aplicação WEB, que nomeamos como CycleSense, visa abordar temas como menstruação e descoberta da gravidez, especificamente. Na página principal apresentaremos uma descrição do projeto, exibindo conteúdos educativos e informações gerais. Teremos como links principais: Tela inicial, Login (e-mail – senha), Cadastro, Dicas, Informações, Calendário Seção Menstrual / Gravidez, Meu perfil, além de direcionamento para contato de profissionais da saúde que a mulher julgue necessário e útil. 
     
-<p align="justify">O front-end da aplicação foi desenvolvido utilizando React, que proporciona uma interface dinâmica e responsiva aos usuários. Implementamos o Node.js como back-end para gerenciar o banco de dados e lidar com a lógica do servidor. O banco de dados utilizado é SQL para armazenar todas as informações dos usuários e conteúdos de forma estruturada.
+<p align="justify">O front-end da aplicação foi desenvolvido utilizando React, que proporciona uma interface dinâmica e responsiva aos usuários. Implementamos o Node.js como back-end para gerenciar o banco de dados e trabalhar com a lógica do servidor. O banco de dados utilizado é SQL para armazenar todas as informações dos usuários e conteúdos de forma estruturada.
 
 <p align="justify">A integração entre essas tecnologias vai nos permitir realizar operações de cadastro e exclusão de usuários e conteúdos. O back-end será feito em Node.js, que deverá verificar se um usuário já está registrado antes de permitir um novo cadastro, exibindo uma mensagem de erro caso já esteja cadastrado no sistema.
 
