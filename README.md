@@ -22,7 +22,7 @@
     
 <p align="justify">O front-end da aplicação foi desenvolvido utilizando React, que proporciona uma interface dinâmica e responsiva aos usuários. Implementamos o Node.js como back-end para gerenciar o banco de dados e lidar com a lógica do servidor. O banco de dados utilizado é SQL para armazenar todas as informações dos usuários e conteúdos de forma estruturada.
 
-<p align="justify">A integração entre essas tecnologias vai nos permitir realizar operações de cadastro e exclusão de usuários e conteúdos. O back-end em Node.js deverá verificar se um usuário já está registrado antes de permitir um novo cadastro, exibindo uma mensagem de erro caso já esteja cadastrado no sistema.
+<p align="justify">A integração entre essas tecnologias vai nos permitir realizar operações de cadastro e exclusão de usuários e conteúdos. O back-end será feito em Node.js, que deverá verificar se um usuário já está registrado antes de permitir um novo cadastro, exibindo uma mensagem de erro caso já esteja cadastrado no sistema.
 
 <p align="justify">Além disso, o Node.js vai gerenciar as requisições do front-end feito em React, garantindo que a comunicação seja eficiente e segura entre o cliente e o servidor. Essa aplicação oferece uma experiência fluida e integrada para que os usuários tenham informações seguras sobre saúde menstrual.
 
