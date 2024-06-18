@@ -112,19 +112,19 @@
 
 | ![Imagem 1](/assets/imagem1.png)  | ![Imagem 2](assets/imagem2.png)  |
 |      :-------------------------:          |        :-------------------------:       |
-|         **Tela de Login**               |     **Tela de cadastro E-mail**   |
+|         **Tela de Login**               |     **Tela de Cadastro E-mail**   |
 
 &nbsp;
 
 | ![Imagem 3](/assets/imagem3.png)  | ![Imagem 4](assets/imagem4.png)  |
 |      :-------------------------:          |        :-------------------------:       |
-|   **Tela de cadastro Nome**    |      **Tela de cadastro Sobrenome**      |
+|   **Tela de Cadastro Nome**    |      **Tela de Cadastro Sobrenome**      |
 
 &nbsp;
 
 | ![Imagem 5](/assets/imagem5.png)  | ![Imagem 6](assets/imagem6.png)  |
 |      :-------------------------:          |        :-------------------------:       |
-|      **Tela de cadastro Data de Nascimnento**      |        **Tela de cadastro Senha**        |
+|      **Tela de Cadastro Data de Nascimento**      |        **Tela de Cadastro Senha**        |
 
 &nbsp;
 
