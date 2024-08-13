@@ -39,13 +39,11 @@ const  getSintomaByIdUser = async ( request, reply ) => {
 
 const  updateSintoma = async ( request, reply ) => {
 	const { id } = request.params;
-  const { usuario_id, data, descricao } = request.body;
+  	const { descricao } = request.body;
 
 	try {
 		const sintoma = await models.sintoma.findByPk(id)
 		if(sintoma) {
-			sintoma.id = usuario_id
-			sintoma.data = data
 			sintoma.descricao = descricao
 			await sintoma.save()
 

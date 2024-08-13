@@ -3,6 +3,7 @@ const Sequelize = require('sequelize');
 const models = require('./models');
 const usuarioService = require('./services/usuarioService');
 const cicloService = require('./services/cicloMenstrualService');
+const sintomasService = require('./services/sintomaService');
 
 // sincronizar Database
 models.sequelize.sync().then(() => {
@@ -17,11 +18,11 @@ fastify.post('/login', usuarioService.login)
 fastify.post('/dias-ciclo', cicloService.requestCiclo)
 
 // Rotas CRUD para sintomas
-fastify.post('/sintomas', sintomasService.createSintoma);
-fastify.get('/sintomas', sintomasService.getAllSintomas);
-fastify.get('/sintomas/:id', sintomasService.getSintomaById);
-fastify.put('/sintomas/:id', sintomasService.updateSintoma);
-fastify.delete('/sintomas/:id', sintomasService.deleteSintoma);
+fastify.post('/sintomas', sintomasService.createSintoma)
+fastify.get('/sintomas', sintomasService.getAllSintomas)
+fastify.get('/sintomas/:id', sintomasService.getSintomaByIdUser)
+fastify.put('/sintomas/:id', sintomasService.updateSintoma)
+fastify.delete('/sintomas/:id', sintomasService.deleteSintoma)
 
 // Roda o server
 const start = async () => {
