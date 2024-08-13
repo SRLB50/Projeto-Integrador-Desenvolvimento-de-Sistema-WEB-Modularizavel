@@ -9,7 +9,22 @@ const getCicloMenstrual = async (idUser) => {
 }
 
 const requestCiclo = async(request, reply) => {
+    const userId = request.body.id
 
+    const cicloUser = await getCicloMenstrual(userId)
+    try {
+        if (cicloUser.length > 0) {
+            const proxCiclo = getProxCiclo(cicloUser[0].fim)
+    
+            reply.send({
+                dias: proxCiclo
+            })
+        }else{
+            reply.status(400).send({response: "Ciclo menstrual não encontrado!"})
+        }
+    } catch (error) {
+        reply.status(500).send({error: error.toString()})
+    }
 }
 
 const getProxCiclo = (finalDate) =>{
@@ -19,11 +34,8 @@ const getProxCiclo = (finalDate) =>{
         month   : new Date(finalDate).getMonth(),
         day     : new Date(finalDate).getDate()
     }
-    console.log("Data Final")
-    console.log(dateFinal)
+    
     const nextCiclo = new Date(parseInt(dateFinal.year), parseInt(dateFinal.month), parseInt(dateFinal.day) + 30)
-    console.log("Próxima menstruação:")
-    console.log(nextCiclo)
     const actualDate = new Date()
     const diasMilissegundos = nextCiclo - actualDate
 
@@ -33,5 +45,5 @@ const getProxCiclo = (finalDate) =>{
 }
 
 module.exports = {
-    getCicloMenstrual, requestCiclo, getProxCiclo
+    getCicloMenstrual, requestCiclo, getProxCiclo, requestCiclo
 }
