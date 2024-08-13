@@ -29,16 +29,16 @@ const login = async (request, reply) => {
       }
     })
 
-    console.log(users)
     if (users.length > 0) {
       const isMatch = await bcrypt.compare(password, users[0].senha)
 
       if (isMatch) {
-        const ciclo = menstruacao.getCicloMenstrual(users[0].id)
+        const ciclo = await menstruacao.getCicloMenstrual(users[0].id)
 
-        const {nome, email} = users
-        reply.send({ response: "Seja bem-vindo!", usuario: {nome, email}, ciclo: ciclo })
-      }else{
+        const dados_usuario = new LoginUser(users, ciclo).returnData()
+
+        reply.send({ response: "Seja bem-vindo!", dados_usuario })
+      } else {
         reply.status(400).send({ error: "Usuário não encontrado!" })
       }
     } else {
@@ -47,6 +47,31 @@ const login = async (request, reply) => {
   } catch (error) {
     reply.status(500).send({ erro: error.toString() })
   }
+}
+
+class LoginUser {
+  constructor(user, ciclo) {
+    this.user = user
+    this.ciclo = ciclo
+  }
+
+  #dataUser(){
+    const nextCiclo =  menstruacao.getProxCiclo(String(this.ciclo[0].fim)) 
+
+    const {nome, email, id} = this.user[0]
+    
+    return {
+      id,
+      nome, 
+      email,
+      ciclo: nextCiclo
+    }
+  }
+
+  returnData(){
+    return this.#dataUser()
+  }
+  
 }
 
 module.exports = {
