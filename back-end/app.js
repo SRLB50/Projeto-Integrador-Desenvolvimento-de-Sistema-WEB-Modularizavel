@@ -2,6 +2,7 @@ const fastify = require('fastify')({ logger: true });
 const Sequelize = require('sequelize');
 const models = require('./models');
 const usuarioService = require('./services/usuarioService');
+const cicloService = require('./services/cicloMenstrualService');
 
 // sincronizar Database
 models.sequelize.sync().then(() => {
@@ -12,6 +13,8 @@ models.sequelize.sync().then(() => {
 
 // Rota para criar usuário
 fastify.post('/usuarios', usuarioService.createUsuario)
+fastify.post('/login', usuarioService.login)
+fastify.post('/dias-ciclo', cicloService.requestCiclo)
 
 // Rotas CRUD para sintomas
 fastify.post('/sintomas', sintomasService.createSintoma);
