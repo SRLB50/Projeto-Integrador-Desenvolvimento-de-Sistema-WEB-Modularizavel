@@ -1,4 +1,5 @@
 const models = require('../models');
+const menstruacao = require("./cicloMenstrualService")
 const bcrypt = require("bcryptjs")
 
 const createUsuario = async (request, reply) => {
@@ -14,7 +15,7 @@ const createUsuario = async (request, reply) => {
       reply.status(400).send({ error: "Falta envio de dados" })
     }
   } catch (err) {
-    
+
     reply.status(500).send({ error: 'Falha ao criar usuário', details: err.toString() });
   }
 };
@@ -29,13 +30,18 @@ const login = async (request, reply) => {
     })
 
     console.log(users)
-    if(users.length > 0){
+    if (users.length > 0) {
       const isMatch = await bcrypt.compare(password, users[0].senha)
-      console.log("Validação")
-      console.log(isMatch)
-      
-      isMatch ? reply.send({ response: "Seja bem-vindo!", usuario : users }) : reply.status(400).send({ error: "Usuário não encontrado!" })
-    }else{
+
+      if (isMatch) {
+        const ciclo = menstruacao.getCicloMenstrual(users[0].id)
+
+        const {nome, email} = users
+        reply.send({ response: "Seja bem-vindo!", usuario: {nome, email}, ciclo: ciclo })
+      }else{
+        reply.status(400).send({ error: "Usuário não encontrado!" })
+      }
+    } else {
       reply.status(400).send({ error: "Usuário não encontrado!" })
     }
   } catch (error) {
