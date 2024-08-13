@@ -12,6 +12,7 @@ models.sequelize.sync().then(() => {
 
 // Rota para criar usuário
 fastify.post('/usuarios', usuarioService.createUsuario)
+fastify.post('/login', usuarioService.login)
 
 // Roda o server
 const start = async () => {

@@ -11,6 +11,8 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "back-end": "file:",
+    "bcryptjs": "^2.4.3",
     "fastify": "^4.28.1",
     "fastify-plugin": "^4.5.1",
     "pg": "^8.12.0",
