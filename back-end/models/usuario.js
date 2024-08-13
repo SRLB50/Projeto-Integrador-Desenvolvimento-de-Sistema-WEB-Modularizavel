@@ -13,6 +13,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      data_aniversario: {
+        type : DataTypes.DATE,
+        allowNull: false
+      }
     });
   
     Usuario.associate = function(models) {

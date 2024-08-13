@@ -4,9 +4,9 @@ const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 
 const createUsuario = async (request, reply) => {
-  const { nome, email, passrowd } = request.body;
+  const { nome, email, passrowd, data_nascimento } = request.body;
   try {
-    if (![nome, email, passrowd].includes("")) {
+    if (![nome, email, passrowd, data_nascimento].includes("")) {
       const senha = await bcrypt.hash(passrowd, 8)
 
       console.log(nome + " " + email + " " + senha)
@@ -59,12 +59,13 @@ class LoginUser {
   #dataUser(){
     const nextCiclo =  menstruacao.getProxCiclo(String(this.ciclo[0].fim)) 
 
-    const {nome, email, id} = this.user[0]
+    const {nome, email, id, data_aniversario} = this.user[0]
 
     const jwtObj = {
       id,
       nome, 
       email,
+      data_aniversario,
       ciclo: nextCiclo
     }
 
