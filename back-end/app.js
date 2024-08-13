@@ -13,6 +13,13 @@ models.sequelize.sync().then(() => {
 // Rota para criar usuário
 fastify.post('/usuarios', usuarioService.createUsuario)
 
+// Rotas CRUD para sintomas
+fastify.post('/sintomas', sintomasService.createSintoma);
+fastify.get('/sintomas', sintomasService.getAllSintomas);
+fastify.get('/sintomas/:id', sintomasService.getSintomaById);
+fastify.put('/sintomas/:id', sintomasService.updateSintoma);
+fastify.delete('/sintomas/:id', sintomasService.deleteSintoma);
+
 // Roda o server
 const start = async () => {
   try {
