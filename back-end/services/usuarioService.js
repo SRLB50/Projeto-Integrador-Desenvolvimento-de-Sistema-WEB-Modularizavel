@@ -1,6 +1,7 @@
 const models = require('../models');
 const menstruacao = require("./cicloMenstrualService")
 const bcrypt = require("bcryptjs")
+const jwt = require("jsonwebtoken")
 
 const createUsuario = async (request, reply) => {
   const { nome, email, passrowd } = request.body;
@@ -59,12 +60,20 @@ class LoginUser {
     const nextCiclo =  menstruacao.getProxCiclo(String(this.ciclo[0].fim)) 
 
     const {nome, email, id} = this.user[0]
-    
-    return {
+
+    const jwtObj = {
       id,
       nome, 
       email,
       ciclo: nextCiclo
+    }
+
+    const token = jwt.sign(jwtObj, "secretIdForMyJWTTokenToSecurityBackEnd", {
+      expiresIn: '3h'
+    })
+
+    return {
+      token
     }
   }
 
