@@ -41,13 +41,13 @@ class LoginUser {
     #dataUser() {
         const nextCiclo = menstruacao.getProxCiclo(String(this.ciclo[0].fim))
 
-        const { nome, email, id, data_aniversario } = this.user[0]
+        const { nome, email, id, data_nascimento } = this.user[0]
 
         const jwtObj = {
             id,
             nome,
             email,
-            data_aniversario,
+            data_nascimento,
             ciclo: nextCiclo
         }
 
