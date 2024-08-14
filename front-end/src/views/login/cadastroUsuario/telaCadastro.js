@@ -15,7 +15,7 @@ function CadastroUsuario() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
-  const [alertColor, setAlertColor] = useState(''); // Para definir a cor do alerta
+  const [alertColor, setAlertColor] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
