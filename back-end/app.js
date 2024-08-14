@@ -19,7 +19,6 @@ fastify.post('/dias-ciclo', cicloService.requestCiclo)
 
 // Rotas CRUD para sintomas
 fastify.post('/sintomas', sintomasService.createSintoma)
-fastify.get('/sintomas', sintomasService.getAllSintomas)
 fastify.get('/sintomas/:id', sintomasService.getSintomaByIdUser)
 fastify.put('/sintomas/:id', sintomasService.updateSintoma)
 fastify.delete('/sintomas/:id', sintomasService.deleteSintoma)
