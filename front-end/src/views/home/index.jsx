@@ -3,6 +3,8 @@
 import { useState } from "react"
 import NavBar from "../../components/NavBar/NavBar"
 import MenuAside from "../../components/MenuAside/MenuAside"
+import { Outlet } from "react-router-dom"
+import "./index.scss"
 
 
 const Home = () => {
@@ -11,13 +13,13 @@ const Home = () => {
 
   return (
     <>
-      <header>
-        <NavBar />
-      </header>
+      
+      <NavBar />
+      <MenuAside />
 
-      <section id="menu">
-        <MenuAside />
-      </section>
+      <main>
+        <Outlet />
+      </main>
     </>
   )
 }

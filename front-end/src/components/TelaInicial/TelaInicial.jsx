@@ -1,0 +1,68 @@
+import CardBlog from "../CardBlog/CardBlog"
+import "./TelaInicial.scss"
+
+const TelaInicial = () => {
+
+    const newDate = new Date().toLocaleDateString()
+    const cards = [
+        {
+            title: "Vida saudável",
+            img: "https://images.pexels.com/photos/864939/pexels-photo-864939.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            subtitle: "03/04/2024 - Michel K. | 4min",
+            text: "Quer uma vida saudável e sem problemas? Vem conosco e se prepare para a mudança de vida!"
+        },
+        {
+            title: "Cuide-se",
+            img: "https://images.pexels.com/photos/774866/pexels-photo-774866.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            subtitle: "02/01/2024 - Sandra R. | 7 min",
+            text: "Se cuidar deve ser um dos primordios femininos. Que tal algumas dicas?"
+        },
+        {
+            title: "Trabalho remoto",
+            img: "https://images.pexels.com/photos/1586973/pexels-photo-1586973.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            subtitle: "10/07/2023 - Gabriel A. | 5 min",
+            text: `O mercado de trabalho remoto para as mulheres cresceu exponencialmente! Veja as vagas que mais permitem o trabalho home office.`
+        }
+    ]
+    return (
+        <section id="tela_inicial">
+            <div id="titulo">
+                <h1 style={{fontSize: "2rem"}}>Seja bem vinda, <span className="pink-text">Marcela</span></h1>
+            </div>
+
+            <div id="calendario-menstrual">
+                <div className="header-calendario">
+                    <span>{newDate}</span>
+
+                    <span>Faltam <span className="circle">9</span> dias para sua menstruação</span>
+                </div>
+
+                <div className="body-calendario">
+
+                </div>
+            </div>
+
+            <div id="dicas-saude">
+                <div className="titulo-saude">
+                    <h3>Dicas de <span className="pink-text">Saúde</span></h3>
+                </div>
+                <div className="cards">
+                    {
+                        cards.map((card, i) => (
+                            <CardBlog 
+                                img={card.img} 
+                                title={card.title}
+                                subtitle={card.subtitle}
+                                text={card.text}
+                                key={i}
+                            />
+                        ))
+                    }
+                </div>
+
+            </div>
+        </section>
+    )
+}
+
+export default TelaInicial

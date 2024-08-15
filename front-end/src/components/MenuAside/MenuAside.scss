@@ -1,0 +1,27 @@
+#menu {
+    padding: 140px 0;
+    box-shadow: 4px 0px 10px 0px #00000026;
+    width: 150px;
+    position: fixed;
+    height: 100em;
+
+    ul{
+        
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        gap: 20px;
+
+        li{
+            a {
+                text-decoration: none;
+                color: #1E1E1E;
+                font-weight: 600;
+                display: flex;
+                justify-content: left;
+                gap: 10px;
+                align-items: center;
+            }
+        }
+    }
+}
