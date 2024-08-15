@@ -1,9 +1,13 @@
+import CalendarioSemanal from "../CalendarioSemanal/CalendarioSemanal"
 import CardBlog from "../CardBlog/CardBlog"
 import "./TelaInicial.scss"
 
 const TelaInicial = () => {
 
-    const newDate = new Date().toLocaleDateString()
+    const [day, month, year] = new Date().toLocaleDateString().split("/")
+    const dayWeek = new Date().getDay()
+    const formattedMonth = getFormattedMonth(Number(month) - 1)
+
     const cards = [
         {
             title: "Vida saudável",
@@ -32,13 +36,13 @@ const TelaInicial = () => {
 
             <div id="calendario-menstrual">
                 <div className="header-calendario">
-                    <span>{newDate}</span>
+                    <span style={{fontWeight: 700}}>{day} de {formattedMonth} de <span className="pink-text">{year}</span></span>
 
                     <span>Faltam <span className="circle">9</span> dias para sua menstruação</span>
                 </div>
 
                 <div className="body-calendario">
-
+                    <CalendarioSemanal actualDate={Number(day)} dayOnWeek={dayWeek} />
                 </div>
             </div>
 
@@ -63,6 +67,17 @@ const TelaInicial = () => {
             </div>
         </section>
     )
+}
+
+const getFormattedMonth = (month) => {
+
+    const months = [
+        "janeiro", "fevereiro", "março", "abril", 
+        "maio", "junho", "julho", "agosto",
+        "setembro", "outubro", "novembro", "dezembro"
+    ]
+
+    return months[month]
 }
 
 export default TelaInicial

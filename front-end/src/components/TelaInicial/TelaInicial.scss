@@ -1,15 +1,36 @@
-#tela_inicial{
+#tela_inicial { 
+    width: 90%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     
-    #titulo{
-        h1{
+    #titulo {
+        h1 {
             margin-top: 50px;
         }
     }
 
-    #dicas-saude{
+    #calendario-menstrual {
+        .header-calendario {
+
+            display: flex;
+            justify-content: space-between;
+
+            .circle {
+                padding: 5px 10px;
+                border-radius: 100%;
+                background-color: #FF869C;
+                color: #FFF;
+                font-weight: 600;
+            }
+        }
+    }
+
+    #dicas-saude {
         margin-top: 20px;
-        
-        .cards{
+
+        .cards {
             display: flex;
             gap: 10px;
         }
