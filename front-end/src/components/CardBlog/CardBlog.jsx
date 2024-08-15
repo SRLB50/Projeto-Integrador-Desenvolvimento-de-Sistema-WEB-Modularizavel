@@ -6,10 +6,15 @@ import {
     CardSubtitle
 } from "reactstrap"
 
+const style = {
+    borderBottom: "3px solid #FF869C", 
+    borderRadius: "15px 15px 0 0"
+}
+
 
 const CardBlog = ({ img, title, subtitle, text }) => {
-    return <Card style={{ width: '16rem' }}>
-            <img alt="Sample" src={img} style={{borderBottom: "3px solid #FF869C"}} />
+    return <Card style={{ width: '16rem', borderRadius: "15px" }}>
+            <img alt="Sample" src={img} style={style} />
             <CardBody>
                 <CardTitle tag="h6">{title}</CardTitle>
                 <CardSubtitle className="mb-2 text-muted" style={{fontSize: "0.8rem"}} tag="h6">{subtitle}</CardSubtitle>
