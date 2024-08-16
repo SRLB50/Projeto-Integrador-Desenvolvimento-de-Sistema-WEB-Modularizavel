@@ -1,28 +1,43 @@
 /* eslint-disable */
-import { react,  useState } from "react"
+import "./index.scss"
+import { Form, FormGroup, Label, Input, Button } from "reactstrap"
+import logo from "./../../assets/CycleSense.svg"
 
 const Login = () => {
-    const [count, setCount] = useState(0)
 
-    return (
-      <>
-        <div>
-          teste tela de login
-        </div>
-        <h1>Vite + React</h1>
-        <div className="card">
-          <button onClick={() => setCount((count) => count + 1)}>
-            count is {count}
-          </button>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test HMR
-          </p>
-        </div>
-        <p className="read-the-docs">
-          Click on the Vite and React logos to learn more
-        </p>
-      </>
-    )
+
+  return (
+    <>
+      <div className="main-login">
+        <section id="content-login">
+          <div className="title">
+            <img src={logo} alt="Cycle Sense" />
+          </div>
+
+          <Form>
+            <FormGroup>
+              <Label for="email">E-mail</Label>
+              <Input id="email" name="email" placeholder="Adicione seu e-mail" type="email" />
+            </FormGroup>
+            <FormGroup>
+              <Label for="password">Senha</Label>
+              <Input id="password" name="password" placeholder="Senha" type="password" />
+            </FormGroup>
+            <Button>
+              Entrar
+            </Button>
+
+            <hr />
+
+            <div className="access" style={{textAlign: "center"}}>
+              <h5>Não tem acesso? Então cadastre-se</h5>
+            </div>
+          </Form>
+
+        </section>
+      </div>
+    </>
+  )
 }
 
 export default Login
