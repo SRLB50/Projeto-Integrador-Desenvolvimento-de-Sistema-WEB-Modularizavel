@@ -1,15 +1,20 @@
 
 /* eslint-disable */
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import NavBar from "../../components/NavBar/NavBar"
 import MenuAside from "../../components/MenuAside/MenuAside"
-import { Outlet } from "react-router-dom"
+import { Outlet, replace, useNavigate } from "react-router-dom"
 import "./index.scss"
 
-
 const Home = () => {
-  const [count, setCount] = useState(0)
-  const [textExample, setTextExample] = useState("")
+
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (window.location.pathname === "/") {
+      navigate("/home", {replace: true})
+    }
+  }, [navigate])
 
   return (
     <>
