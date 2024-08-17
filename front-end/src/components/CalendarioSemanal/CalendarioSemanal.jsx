@@ -1,9 +1,9 @@
 import BodyDay from "../BodyDay/BodyDay"
 import "./CalendarioSemanal.scss"
 
-const CalendarioSemanal = ({ actualDate, dayOnWeek }) => {
+const CalendarioSemanal = ({ actualDate, dayOnWeek, month, year }) => {
 
-    const instance = new CountCalendar(dayOnWeek, actualDate)
+    const instance = new CountCalendar(dayOnWeek, actualDate, month, year)
     const days = instance.days()
 
     return (
@@ -28,43 +28,51 @@ const CalendarioSemanal = ({ actualDate, dayOnWeek }) => {
 }
 
 class CountCalendar {
-    constructor(dayWeek, getDay) {
-        this.dayWeek = dayWeek
-        this.getDay = getDay
+    constructor(dayWeek, getDay, month, year) {
+        this.dayWeek = dayWeek;
+        this.getDay = getDay;
+        this.month = month;
+        this.year = year;
+    }
+
+    getActualDate(day) { 
+        return new Date(this.year, this.month, day);
+    }
+
+    getPreviousMonthLastDay() {
+        return new Date(this.year, this.month, 0).getDate();
     }
 
     #increment() {
-        let days = []
-        const quantDaysIncrement = 7 - this.dayWeek
+        let days = [];
+        const quantDaysIncrement = 7 - this.dayWeek;
         for (let y = 0; y < quantDaysIncrement; y++) {
-            days.push(this.getDay + y)
+            const getDate = this.getActualDate(this.getDay + y);
+            days.push(getDate.getDate());
         }
-
-        return days
+        return days;
     }
 
     #decrement() {
-        let days = []
-        if (this.dayWeek == 7) {
-            for (let x = 0; x < 7; x++) {
-                days.push(this.getDay - x)
+        let days = [];
+        const previousMonthLastDay = this.getPreviousMonthLastDay();
+        const quantDaysDecrement = this.dayWeek;
+        for (let y = quantDaysDecrement; y > 0; y--) {
+            let day = this.getDay - y;
+            if (day <= 0) {
+                day = previousMonthLastDay + day;
             }
-        } else {
-            const quantDaysDecrement = 7 - this.dayWeek
-            const decrement = (this.dayWeek == 0) ? 0 : 7 - quantDaysDecrement
-            for (let y = 0; y < decrement; y++) {
-                days.push(this.getDay - (y + 1))
-            }
+            days.push(day);
         }
-
-        return days
+        return days;
     }
 
     days() {
-        const decrement = this.#decrement()
-        const increment = this.#increment()
-
-        return decrement.concat(increment).sort((a, b) => a - b)
+        const decrement = this.#decrement();
+        const increment = this.#increment();
+        return decrement.concat(increment);
     }
 }
+
+
 export default CalendarioSemanal

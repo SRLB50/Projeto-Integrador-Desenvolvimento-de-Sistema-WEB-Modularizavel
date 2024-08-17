@@ -17,12 +17,22 @@
             display: flex;
             justify-content: space-between;
 
-            .circle {
-                padding: 5px 10px;
-                border-radius: 100%;
-                background-color: #FF869C;
-                color: #FFF;
-                font-weight: 600;
+            .dias-menstruacao{
+                display: flex;
+                gap: 10px;
+
+                .circle {
+                    height: 30px;
+                    width: 30px;
+                    display: flex;
+                    justify-content: center;
+                    border-radius: 100%;
+                    background-color: #FF869C;
+                    color: #FFF;
+                    font-weight: 600;
+                    align-items: center;
+                    flex-direction: row;
+                }
             }
         }
     }

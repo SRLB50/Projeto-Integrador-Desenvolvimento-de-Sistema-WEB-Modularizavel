@@ -3,7 +3,9 @@
 import { useState, useEffect } from "react"
 import NavBar from "../../components/NavBar/NavBar"
 import MenuAside from "../../components/MenuAside/MenuAside"
-import { Outlet, replace, useNavigate } from "react-router-dom"
+import { Outlet, useNavigate } from "react-router-dom"
+
+
 import "./index.scss"
 
 const Home = () => {
