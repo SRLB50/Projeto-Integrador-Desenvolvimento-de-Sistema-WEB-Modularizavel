@@ -1,0 +1,33 @@
+
+/*estilização para componente de calendário*/
+.calendar-container { 
+  width: 100%;
+  max-width: 1000px;
+  border: 1px solid rgb(4, 4, 4, 0.16);
+  border-radius: 16px;
+  padding-bottom: 20px;
+
+  box-shadow: -2px 1px 12px 4px rgb(4, 4, 4, 0.16);
+  -webkit-box-shadow: -2px 1px 12px 4px rgb(4, 4, 4, 0.16);
+  -moz-box-shadow: -2px 1px 12px 4px rgb(4, 4, 4, 0.16);
+
+  .calendar {
+    width: 100%;
+    max-width: 1000px;
+    border-collapse: collapse;
+  }
+
+  .calendar th {
+    border-bottom: 1px solid rgb(4, 4, 4, 0.16);
+  }
+  
+  .calendar th, .calendar td {
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .empty-cell {
+    background-color: #f9f9f9;
+  }
+
+}
