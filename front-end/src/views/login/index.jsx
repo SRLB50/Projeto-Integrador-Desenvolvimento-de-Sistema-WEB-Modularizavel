@@ -1,6 +1,6 @@
 /* eslint-disable */
 import "./index.scss"
-import { Form, FormGroup, Label, Input, Button, Toast, ToastHeader, ToastBody } from "reactstrap"
+import { Form, FormGroup, Label, Input, Button } from "reactstrap"
 import logo from "./../../assets/CycleSense.svg"
 import Auth from "../../services/auth"
 import { useNavigate } from "react-router-dom"
