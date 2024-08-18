@@ -20,11 +20,11 @@ const MenuAside = () => {
                 </NavItem>
                 
                 <NavItem>
-                <Link to="/" ><img src={dicas} alt='Dicas' /> Dicas</Link>
+                <Link to="/dicas" ><img src={dicas} alt='Dicas' /> Dicas</Link>
                 </NavItem>
                 
                 <NavItem>
-                <Link to="/" ><img src={user} alt='Perfil' /> Perfil</Link>
+                <Link to="/perfil" ><img src={user} alt='Perfil' /> Perfil</Link>
                 </NavItem>
             </Nav>
         </section>
