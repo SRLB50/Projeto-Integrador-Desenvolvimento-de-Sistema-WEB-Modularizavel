@@ -25,6 +25,20 @@
         justify-content: center;
         align-items: center;
     }
+
+    .ciclo-active{
+        width: 2em;
+        height: 2em;
+        background-color: #E04F4F;
+        color: #FFF;
+        font-weight: 700;
+        border-radius: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     .body-day{
         height: 45px;
         font-size: 1.3rem;

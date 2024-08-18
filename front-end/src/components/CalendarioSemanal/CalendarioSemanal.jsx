@@ -1,7 +1,7 @@
 import BodyDay from "../BodyDay/BodyDay"
 import "./CalendarioSemanal.scss"
 
-const CalendarioSemanal = ({ actualDate, dayOnWeek, month, year }) => {
+const CalendarioSemanal = ({ actualDate, dayOnWeek, month, year, ciclo }) => {
 
     const instance = new CountCalendar(dayOnWeek, actualDate, month, year)
     const days = instance.days()
@@ -20,8 +20,8 @@ const CalendarioSemanal = ({ actualDate, dayOnWeek, month, year }) => {
 
             <div className="body">
                 {
-                    days.map((day, i) => (<BodyDay day={day} key={i} />))
-                }
+                    days.map((day, i) => ( ciclo == (i + 1) ? <BodyDay day={day} ciclo={true} key={i} /> : <BodyDay day={day} key={i} /> ) )
+                } 
             </div>
         </section>
     )
