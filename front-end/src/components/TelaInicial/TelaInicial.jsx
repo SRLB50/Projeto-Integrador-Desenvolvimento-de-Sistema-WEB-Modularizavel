@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react"
 import CalendarioSemanal from "../CalendarioSemanal/CalendarioSemanal"
 import CardBlog from "../CardBlog/CardBlog"
-import {jwtDecode} from "jwt-decode"
+//import {jwtDecode} from "jwt-decode"
 import "./TelaInicial.scss"
 import { useNavigate } from "react-router-dom"
 import Ciclo from "../../services/ciclo"
 import Cards from "./../../mocks/cards.json"
+
+//Dados mockados
+import mockAuth from "./../../mocks/user.json"
 
 const TelaInicial = () => {
     const navigate = useNavigate()
@@ -19,12 +22,12 @@ const TelaInicial = () => {
     const [ciclo, setCiclo] = useState()
 
     useEffect(() => {
-        const token = sessionStorage.getItem("token")
+        const token = mockAuth
         if (token) {
-            const decodeToken = jwtDecode(token)
-            const {nome, id} = decodeToken
+            //const decodeToken = jwtDecode(token)
+            const {nome, id, ciclo} = token[0]
             
-            getCiclo(id)
+            setCiclo(ciclo)
             setName(nome)
             setId(id)
         }else{
@@ -50,7 +53,17 @@ const TelaInicial = () => {
                 <div className="header-calendario">
                     <span style={{fontWeight: 700}}>{day} de {formattedMonth} de <span className="pink-text">{year}</span></span>
 
-                    <span className="dias-menstruacao">Faltam <span className="circle">{ciclo}</span> dias para sua menstruação</span>
+                    <div className="dias-menstruacao">
+                        {
+                            ciclo > 0 
+                            ? 
+                                (<span>Faltam <span className="circle">{ciclo}</span> dias para sua menstruação</span> ) 
+                            : 
+                                ciclo < 0 
+                                    ? <h5 className="pink-text"> {Math.abs(ciclo)} da sua menstruação inicial!</h5> 
+                                    : <h5 className="pink-text">Sua menstruação se inicia hoje!</h5> 
+                        }
+                    </div>
                 </div>
 
                 <div className="body-calendario">
