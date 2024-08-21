@@ -1,51 +1,98 @@
-
 /* eslint-disable */
-import React from 'react';
-import './index.scss'; // Importa os estilos para o calendário
+import React, { useEffect, useState } from 'react';
+import './index.scss';
+import ArrowLeft from '../../../public/assets/arrow-left.svg'
+import ArrowRight from '../../../public/assets/arrow-right.svg'
 
-const Calendar = ({ year, month }) => {
-  // Obtém o número de dias no mês
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
-  // Obtém o dia da semana do primeiro dia do mês
-  const firstDayOfMonth = new Date(year, month, 1).getDay();
+const Calendar = () => {
+  const [currentDate, setCurrentDate] = useState(new Date());
+  const [weeks, setWeeks] = useState([]);
 
-  // Cria um array com os dias do mês, iniciando do primeiro dia da semana
-  const days = Array.from({ length: daysInMonth }, (_, i) => i + 1);
-  const leadingEmptyCells = Array(firstDayOfMonth).fill(null);
-  const calendarDays = [...leadingEmptyCells, ...days];
+  const updateCalendar = (date) => {
+    const year = date.getFullYear();
+    const month = date.getMonth();
 
-  // Divide os dias em semanas
-  const weeks = [];
-  while (calendarDays.length) {
-    weeks.push(calendarDays.splice(0, 7));
-  }
+    // Obtém o número de dias no mês usando de referência o ultimo dia
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+    // Obtém o dia da semana do primeiro dia do mês
+    const firstDayOfMonth = new Date(year, month, 1).getDay();
+
+    // Cria um array com os dias do mês de referência
+    const days = Array.from({ length: daysInMonth }, (_, i) => i + 1);
+
+    // Calcula os dias que devem ficar em branco no calendário tendo segunda-feira como inicio
+    const leadingEmptyCells = Array((firstDayOfMonth + 6) % 7).fill(null);
+
+
+    console.log(firstDayOfMonth, 'firstDayOfMonth')
+    console.log((firstDayOfMonth + 6), 'calc')
+    console.log(((firstDayOfMonth + 6) % 7), 'teste')
+
+    // mescla os dois arrays
+    const calendarDays = [...leadingEmptyCells, ...days];
+
+    // Divide os dias em semanas para renderizar na tabela
+    const newWeeks = [];
+    while (calendarDays.length) {
+      newWeeks.push(calendarDays.splice(0, 7));
+    }
+
+    setWeeks(newWeeks);
+  };
+
+  useEffect(() => {
+    updateCalendar(currentDate);
+
+    //Realizando a limpeza do componente
+    return () => {}
+  }, [currentDate]);
+
+  const handleGetMonth = (action) => {
+    const month = action == 'next' ? currentDate.getMonth() + 1 : currentDate.getMonth() - 1
+    setCurrentDate(new Date(currentDate.getFullYear(), month, 1));
+  };
 
   return (
-    <div className="calendar-container">
-      <table className="calendar">
-        <thead>
-          <tr>
-            <th>Seg</th>
-            <th>Ter</th>
-            <th>Qua</th>
-            <th>Qui</th>
-            <th>Sex</th>
-            <th>Sab</th>
-            <th>Dom</th>
-          </tr>
-        </thead>
-        <tbody>
-          {weeks.map((week, i) => (
-            <tr key={i}>
-              {week.map((day, index) => (
-                <td key={index} className={day ? '' : 'empty-cell'}>
-                  {day}
-                </td>
-              ))}
+    <div className="container-calendar-structure">
+      <img 
+        src={ArrowLeft} 
+        onClick={() => handleGetMonth('previous')}
+        className="arrow"
+        alt="seta para a esquerda" 
+      />
+      <div className="calendar-container"> 
+        <table className="calendar">
+          <thead>
+            <tr>
+              <th>Seg</th>
+              <th>Ter</th>
+              <th>Qua</th>
+              <th>Qui</th>
+              <th>Sex</th>
+              <th>Sab</th>
+              <th>Dom</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {weeks.map((week, i) => (
+              <tr key={i}>
+                {week.map((day, index) => (
+                  <td key={index} className={day ? "standart-cell" : "empty-cell"}>
+                    <span className="standart-day">{day}</span>
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <img 
+        src={ArrowRight}
+        onClick={() => { handleGetMonth('next') }}
+        className="arrow"
+        alt="seta para a direita"
+      />
     </div>
   );
 };
