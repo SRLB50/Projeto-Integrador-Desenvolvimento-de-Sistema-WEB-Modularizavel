@@ -12,16 +12,23 @@ import mockAuth from "./../../mocks/user.json"
 
 const TelaInicial = () => {
     const navigate = useNavigate()
-    const [day, month, year] = new Date().toLocaleDateString().split("/")
-    const dayWeek = new Date().getDay()
-    const formattedMonth = getFormattedMonth(Number(month) - 1)
-    const cards = Cards
     
+    const [day, setDay] = useState(new Date().getDate())
+    const [month, setMonth] = useState((new Date().getMonth() + 1))
+    const [year, setYear] = useState(new Date().getYear())
+    const [dayWeek, setDayWeek] = useState(new Date().getDay())
+    const [formattedMonth, setFormattedMonth] = useState("")
+    const [cards, setCards] = useState([])
+
     const [name, setName] = useState()
     const [id, setId] = useState()
-    const [ciclo, setCiclo] = useState()
+    const [ciclo, setCiclo] = useState(0)
 
     useEffect(() => {
+        dateComponent()
+    }, [])
+    useEffect(() => {
+        initCards()
         const token = mockAuth
         if (token) {
             //const decodeToken = jwtDecode(token)
@@ -34,6 +41,20 @@ const TelaInicial = () => {
             navigate("/login")
         }
     }, [])
+
+    const dateComponent = () => {
+        const [day, month, year] = new Date().toLocaleDateString().split("/")
+        const dayWeek = new Date().getDay()
+        const formattedMonth = getFormattedMonth(Number(month) - 1)
+
+        setDay(Number(day))
+        setMonth(Number(month))
+        setYear(Number(year))
+        setDayWeek(dayWeek)
+        setFormattedMonth(formattedMonth)
+    }
+
+    const initCards = () => setCards(Cards)
 
     const getCiclo = async (id) => {
         const requestCiclo = new Ciclo(id)
@@ -60,14 +81,14 @@ const TelaInicial = () => {
                                 (<span>Faltam <span className="circle">{ciclo}</span> dias para sua menstruação</span> ) 
                             : 
                                 ciclo < 0 
-                                    ? <h5 className="pink-text"> {Math.abs(ciclo)} da sua menstruação inicial!</h5> 
+                                    ? <h5 className="pink-text"> {Math.abs(ciclo)} dia(s) da sua menstruação inicial!</h5> 
                                     : <h5 className="pink-text">Sua menstruação se inicia hoje!</h5> 
                         }
                     </div>
                 </div>
 
                 <div className="body-calendario">
-                    <CalendarioSemanal actualDate={Number(day)} dayOnWeek={dayWeek} month={Number(month)} year={Number(year)} ciclo={(ciclo + Number(day))} />
+                    <CalendarioSemanal actualDate={day} dayOnWeek={dayWeek} month={month} year={year} ciclo={(ciclo + day)} periodUser={ciclo} />
                 </div>
             </div>
 

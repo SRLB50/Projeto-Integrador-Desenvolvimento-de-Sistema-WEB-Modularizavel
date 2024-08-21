@@ -2,12 +2,28 @@ import { useEffect, useState } from "react"
 import BodyDay from "../BodyDay/BodyDay"
 import "./CalendarioSemanal.scss"
 
-const CalendarioSemanal = ({ actualDate, dayOnWeek, month, year, ciclo }) => {
+const CalendarioSemanal = ({ actualDate, dayOnWeek, month, year, ciclo, periodUser }) => {
     const [days, setDays] = useState([])
+    const [period, setPeriod] = useState([])
+    
     useEffect(() => {
         const instance = new CountCalendar(dayOnWeek, actualDate, month, year)
         setDays(instance.days())
-    }, [])
+
+        setPeriod(calcNextPeriod())
+    }, [periodUser])
+
+    const calcNextPeriod = () => {
+        let period = []
+        for (let x = 0; x < 5; x++) {
+            const mountDays = x + periodUser
+            const date = new Date(year, month, (mountDays + actualDate)).getDate()
+
+            period.push(date)
+        }
+
+        return period
+    }
 
     return (
         <section id="calendar-week">
@@ -23,7 +39,7 @@ const CalendarioSemanal = ({ actualDate, dayOnWeek, month, year, ciclo }) => {
 
             <div className="body">
                 {
-                    days.map((day, i) => ciclo == day ? (<BodyDay day={day} ciclo={true} key={i} />) : (<BodyDay day={day} key={i} />))
+                    days.map((day, i) => (ciclo == day || period.includes(day)) ? (<BodyDay day={day} ciclo={true} key={i} />) : (<BodyDay day={day} key={i} />))
                 }
             </div>
         </section>
