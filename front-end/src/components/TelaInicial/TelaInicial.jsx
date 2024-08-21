@@ -54,7 +54,7 @@ const TelaInicial = () => {
                 </div>
 
                 <div className="body-calendario">
-                    <CalendarioSemanal actualDate={Number(day)} dayOnWeek={dayWeek} month={Number(month)} year={Number(year)} ciclo={ciclo} />
+                    <CalendarioSemanal actualDate={Number(day)} dayOnWeek={dayWeek} month={Number(month)} year={Number(year)} ciclo={(ciclo + Number(day))} />
                 </div>
             </div>
 
@@ -71,6 +71,7 @@ const TelaInicial = () => {
                                 subtitle={card.subtitle}
                                 text={card.text}
                                 key={i}
+                                id={card.id}
                             />
                         ))
                     }

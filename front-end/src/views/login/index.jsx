@@ -31,8 +31,8 @@ const Login = () => {
 
       const returnUser = await sendUser.send()
 
-      if (returnUser.response == "erro") {
-        alert(`Erro: ${returnUser.erro}`)
+      if (returnUser.error) {
+        alert(`Erro: ${returnUser.error}`)
       } else {
         sessionStorage.setItem("token", returnUser.dados_usuario.token)
         navigate("/")

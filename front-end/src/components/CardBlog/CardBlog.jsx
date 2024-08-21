@@ -12,8 +12,8 @@ const style = {
 }
 
 
-const CardBlog = ({ img, title, subtitle, text }) => {
-    return <Card style={{ width: '16rem', borderRadius: "15px" }}>
+const CardBlog = ({ img, title, subtitle, text, id, handleClick }) => {
+    return <Card style={{ width: '16rem', borderRadius: "15px" }} onClick={() => handleClick(id)}>
             <img alt="Sample" src={img} style={style} />
             <CardBody>
                 <CardTitle tag="h6">{title}</CardTitle>
