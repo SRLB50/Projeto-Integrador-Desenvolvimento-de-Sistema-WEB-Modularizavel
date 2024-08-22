@@ -1,0 +1,26 @@
+[
+    {
+        "title": "Vida saudável",
+        "img": "https://images.pexels.com/photos/864939/pexels-photo-864939.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "subtitle": "03/04/2024 - Michel K. | 4min",
+        "text": "Quer uma vida saudável e sem problemas? Vem conosco e se prepare para a mudança de vida!",
+        "post" : "Nosso objetivo é te oferecer ferramentas e informações para que você possa viver de forma mais saudável, equilibrada e feliz. Alimentação Balanceada Uma alimentação equilibrada é fundamental para manter o corpo saudável e cheio de energia. Priorize alimentos ricos em nutrientes, como frutas, legumes, verduras, grãos integrais e proteínas magras. Evite o consumo excessivo de alimentos processados, açúcares e gorduras saturadas. Manter-se hidratada é igualmente importante; beba pelo menos dois litros de água por dia. Saúde Mental e Emocional Cuidar da saúde mental é tão importante quanto cuidar da saúde física. Reserve um tempo para relaxar e descontrair, pratique técnicas de mindfulness ou meditação e mantenha um equilíbrio entre trabalho e vida pessoal. Não hesite em procurar ajuda profissional se sentir que precisa de apoio psicológico. Rotina de Sono O sono de qualidade é vital para a regeneração do corpo e da mente. Crie uma rotina de sono regular, tentando dormir e acordar nos mesmos horários todos os dias. Um ambiente tranquilo e confortável pode ajudar a melhorar a qualidade do seu sono. Consultas Médicas Regulares Manter visitas regulares ao ginecologista e outros profissionais de saúde é crucial para a prevenção e detecção precoce de possíveis problemas. Realize exames de rotina, como o Papanicolau e mamografias, conforme as recomendações do seu médico.",
+        "id" : 1
+    },
+    {
+        "title": "Cuide-se",
+        "img": "https://images.pexels.com/photos/774866/pexels-photo-774866.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "subtitle": "02/01/2024 - Sandra R. | 7 min",
+        "text": "Se cuidar deve ser um dos primordios femininos. Que tal algumas dicas?",
+        "post" : "Cuidar de si mesma deve ser uma das prioridades femininas. Que tal algumas dicas para garantir que você esteja sempre no seu melhor? Autoexame Mensal Realize autoexames regulares das mamas para detectar qualquer alteração. Conhecer seu próprio corpo é o primeiro passo para identificar qualquer anormalidade. Hidratação Adequada Além de beber água, mantenha sua pele hidratada com cremes específicos, especialmente nas áreas mais ressecadas como cotovelos e joelhos. Momento de Autocuidado Reserve um tempo na sua semana para um momento de autocuidado, seja um banho relaxante, uma leitura tranquila ou qualquer atividade que te faça sentir bem. Desenvolvimento Pessoal  Invista em si mesma, aprendendo algo novo ou aprimorando habilidades que você já possui. Cursos online, leituras e hobbies são ótimas maneiras de continuar crescendo e se desafiando. Alimentação Consciente Preste atenção nos sinais do seu corpo e evite comer por impulso. Pratique a alimentação consciente, apreciando cada refeição e escolhendo alimentos que nutram seu corpo.",
+        "id" : 2
+    },
+    {
+        "title": "Trabalho remoto",
+        "img": "https://images.pexels.com/photos/1586973/pexels-photo-1586973.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "subtitle": "10/07/2023 - Gabriel A. | 5 min",
+        "text": "O mercado de trabalho remoto para as mulheres cresceu exponencialmente! Veja as vagas que mais permitem o trabalho home office.",
+        "post" : "O mercado de trabalho remoto tem crescido exponencialmente, proporcionando às mulheres mais flexibilidade e oportunidades de equilibrar a vida profissional e pessoal. Vamos explorar algumas oportunidades que permitem o trabalho remoto e podem ser ideais para você. Tecnologia da Informação (TI) O setor de TI é um dos que mais oferece vagas de trabalho remoto. As funções incluem desenvolvimento de software, suporte técnico, análise de sistemas, e gestão de projetos de TI.  Marketing Digital O marketing digital é outra área em expansão para o trabalho remoto. Profissionais de SEO, gerentes de redes sociais, especialistas em conteúdo, e analistas de marketing digital são altamente demandados. Serviço ao Cliente Muitas empresas contratam representantes de atendimento ao cliente para trabalhar de casa, respondendo a consultas via telefone, e-mail ou chat online. Essa é uma excelente oportunidade para quem tem boas habilidades de comunicação e deseja um horário flexível. Design Gráfico e Web Design Designers gráficos e web designers são muito procurados para criar e manter identidades visuais e sites de empresas. Recursos Humanos O trabalho remoto em recursos humanos inclui recrutamento, treinamento e desenvolvimento, e gestão de benefícios dos funcionários. Muitas empresas estão adotando equipes de RH distribuídas para melhor gerenciar talentos globais.",
+        "id" : 3
+    }
+]

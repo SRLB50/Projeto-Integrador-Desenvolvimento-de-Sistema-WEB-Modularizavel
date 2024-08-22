@@ -1,0 +1,61 @@
+
+#calendar-week{
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 0px #00000033;
+    margin-top: 20px;
+
+    padding: 5px;
+
+    .header-day{
+        height: 30px;
+        border-bottom: 1px solid #1E1E1E29;
+        font-weight: 700;
+        font-size: 1.1rem;
+    }
+
+    .pink-date{
+        width: 2em;
+        height: 2em;
+        background-color: #FF869C;
+        border: 3px solid #ebff15;
+        color: #FFF;
+        font-weight: 700;
+        border-radius: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .ciclo-active{
+        width: 2em;
+        height: 2em;
+        background-color: #E04F4F;
+        color: #FFF;
+        font-weight: 700;
+        border-radius: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .body-day{
+        height: 45px;
+        font-size: 1.3rem;
+    }
+
+    .header, .body{
+        display: flex;
+        justify-content: space-around;
+    }
+    
+    .header-day, .body-day{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+        text-align: center;
+        padding: 5px;
+    }
+}
