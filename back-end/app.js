@@ -1,16 +1,24 @@
 const fastify = require('fastify')({ logger: true });
-const Sequelize = require('sequelize');
 const models = require('./models');
 const usuarioService = require('./services/usuarioService');
 const cicloService = require('./services/cicloMenstrualService');
+const sintomasService = require('./services/sintomaService');
 const authService = require("./services/authService")
 const gravidezService = require('./services/gravidezService');
+const fastifyCors = require('@fastify/cors');
 
 // sincronizar Database
 models.sequelize.sync().then(() => {
   console.log('Database sincronizada');
 }).catch(err => {
   console.error('Erro ao conectar no banco:', err);
+});
+
+
+fastify.register(fastifyCors, {
+  origin: '*',
+  methods: ['GET', 'PUT', 'POST', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 });
 
 // Rota para criar usuário
@@ -27,6 +35,12 @@ fastify.put('/encerrar-ciclo' , cicloService.finishCiclo)//encerra o ciclo em ab
 fastify.get('/gravidezes' , gravidezService.getGravidez) //envia todas as gravidezes p/ o front
 fastify.post('/iniciar-gravidez' , gravidezService.startGravidez) //cria a gravidez
 fastify.put('/atualizar-gravidez' , gravidezService.finishGravidez) //atualiza data fim da gravidez
+
+// Rotas CRUD para sintomas
+fastify.post('/sintomas', sintomasService.createSintoma)
+fastify.get('/sintomas/:id', sintomasService.getSintomaByIdUser)
+fastify.put('/sintomas/:id', sintomasService.updateSintoma)
+fastify.delete('/sintomas/:id', sintomasService.deleteSintoma)
 
 // Roda o server
 const start = async () => {
