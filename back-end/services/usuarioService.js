@@ -8,7 +8,7 @@ const createUsuario = async (request, reply) => {
       const senha = await bcrypt.hash(passrowd, 8)
 
       console.log(nome + " " + email + " " + senha)
-      const usuario = await models.Usuario.create({ nome, email, senha });
+      const usuario = await models.Usuario.create({ nome, email, senha, data_nascimento });
       reply.send(usuario);
     } else {
       reply.status(400).send({ error: "Falta envio de dados" })
