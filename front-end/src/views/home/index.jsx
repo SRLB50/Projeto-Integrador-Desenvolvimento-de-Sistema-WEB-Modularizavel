@@ -1,38 +1,34 @@
 
 /* eslint-disable */
-import { react,  useState } from "react"
-import InputElement from "../../components/FormElements/Input"
+import { useState, useEffect } from "react"
+import NavBar from "../../components/NavBar/NavBar"
+import MenuAside from "../../components/MenuAside/MenuAside"
+import { Outlet, useNavigate } from "react-router-dom"
+
+
+import "./index.scss"
 
 const Home = () => {
-    const [count, setCount] = useState(0)
-    const [textExample, setTextExample] = useState("")
 
-    return (
-      <>
-        <div>
-          teste tela de Home
-        </div>
-        <h1>Vite + React</h1>
-        <div className="card">
-          <InputElement
-            label={"input de teste"}
-            type="text"
-            id="input-text"
-            value={textExample}
-            setValue={setTextExample}
-          />
-          <button onClick={() => setCount((count) => count + 1)}>
-            count is {count}
-          </button>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test HMR
-          </p>
-        </div>
-        <p className="read-the-docs">
-          Click on the Vite and React logos to learn more
-        </p>
-      </>
-    )
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (window.location.pathname === "/") {
+      navigate("/home", {replace: true})
+    }
+  }, [navigate])
+
+  return (
+    <>
+      
+      <NavBar />
+      <MenuAside />
+
+      <main>
+        <Outlet />
+      </main>
+    </>
+  )
 }
 
 export default Home

@@ -1,16 +1,23 @@
 const fastify = require('fastify')({ logger: true });
-const Sequelize = require('sequelize');
 const models = require('./models');
 const usuarioService = require('./services/usuarioService');
 const cicloService = require('./services/cicloMenstrualService');
 const sintomasService = require('./services/sintomaService');
 const authService = require("./services/authService")
+const fastifyCors = require('@fastify/cors');
 
 // sincronizar Database
 models.sequelize.sync().then(() => {
   console.log('Database sincronizada');
 }).catch(err => {
   console.error('Erro ao conectar no banco:', err);
+});
+
+
+fastify.register(fastifyCors, {
+  origin: '*',
+  methods: ['GET', 'PUT', 'POST', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 });
 
 // Rota para criar usuário
