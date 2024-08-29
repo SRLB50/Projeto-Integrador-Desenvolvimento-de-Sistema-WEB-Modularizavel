@@ -1,0 +1,135 @@
+@use './global';
+
+.modal-content{
+    width: 600px;
+    padding: 55px 70px;
+    border-radius: 0;
+    border: none;
+    align-self: center;
+
+    .modal-header {
+        color: global.$pink;
+        border: none;
+        padding: 0 0 20px;
+
+            .modal-title{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Inter' , sans-serif;
+            font-weight: 500;
+            font-size: 28px;
+            width: 498px;
+            }
+            .btn-close{
+                display: none;
+            }
+            img{
+                height: 19px;
+                cursor: pointer;
+            }
+            img:hover{
+                scale: 1.1;
+            }
+            img:active{
+                scale: 0.98;
+            }
+            #logo{
+                width: 220px;
+                height: 60px;
+                scale: 1;
+                position: relative;
+                left: 50%;
+                transform: translate(-50%, 0);
+                margin-bottom: 5px;         
+            }
+            #close-icon{
+                height: 12px;
+                width: 12px;
+                position: absolute;
+                top: 30px;
+                right: 30px;
+            }
+    }
+    .modal-body{
+        color: global.$font-color;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+            ul{
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                font-size: 20px;
+                padding-left: 60px;
+                border: none;
+                min-height: 126px;
+                margin: 20px 0;
+            }
+            .form-label{
+                display: none;
+            }
+            .form-control{
+                height: 230px;
+                resize: none;
+                padding: 10px 15px;
+                border-radius: 0px;
+                
+                .textarea{
+                    border: solid 1px #988a8d;
+                }
+            }
+            .form-control:focus{
+                box-shadow: none;
+                border-color: #988a8d;
+            }
+            span {
+                color: global.$pink;
+            }
+            p , h3 {
+                align-self: center;
+                margin-bottom: 10px;
+                text-align: center;
+            }
+    }
+    .modal-footer{
+        border: none;
+        justify-content: space-between;
+        padding: 0px;
+        margin-top: 20px;
+            
+            .btn-secondary , .btn-primary{
+                width: 189px;
+                height: 40px;
+                font-size: 20px;
+            }
+            #button-ok{
+                position: relative;
+                left: 50%;
+                transform: translate(-50%, 0); 
+                margin-top: 10px;
+            }
+
+    }
+}
+#edit-icon {
+    all: unset;
+}
+#delete-modal{
+    .modal-content{
+        width: 600px;
+        height: 306px;
+        font-size: 28px;
+        font-weight: 400;
+        text-align: center;
+            .modal-body{
+                display: flex;
+            }
+            p{
+                align-self: center;
+            }
+            span{
+                font-weight: 500;
+            }
+    }
+}
