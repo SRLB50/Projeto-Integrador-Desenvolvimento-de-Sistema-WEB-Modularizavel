@@ -1,5 +1,8 @@
 /* eslint-disable */
 import { react,  useState } from "react"
+import BotaoModal from "../../components/Modais/BotaoModal"
+import ModalLembrete from "../../components/Modais/ModalLembrete"
+import ModalAtraso from "../../components/Modais/ModalAtraso"
 
 const Login = () => {
     const [count, setCount] = useState(0)
@@ -21,6 +24,9 @@ const Login = () => {
         <p className="read-the-docs">
           Click on the Vite and React logos to learn more
         </p>
+        <BotaoModal />
+        <ModalLembrete />
+        <ModalAtraso daysLate={0}/>
       </>
     )
 }
