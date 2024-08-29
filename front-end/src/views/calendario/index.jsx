@@ -1,11 +1,13 @@
 
 /* eslint-disable */
 import { react,  useState } from "react"
+import {Button} from 'reactstrap'
 import CalendarioComponent from '../../components/CalendarioComponent/index'
 import './index.scss'
 
 const Calendario = () => {
     const [count, setCount] = useState(0)
+    const [daySelected, setDaySelected] = useState("")
     const [textExample, setTextExample] = useState("")
 
     const formatDate = (date) => {
@@ -27,7 +29,26 @@ const Calendario = () => {
           </div>
         </div>
         <div className="">
-          <CalendarioComponent year={2024} month={7} />
+          <CalendarioComponent daySelected={daySelected} setDaySelected={setDaySelected} />
+        </div>
+        <div className="actions-button-container">
+          <div className="flex-buttons">
+            <Button 
+              className="action-button action-button-filled"
+            > 
+              Menstruação 
+            </Button>
+            <Button 
+              className="action-button action-button-filled"
+            > 
+              Sintoma 
+            </Button>
+          </div>
+          <Button 
+            className="action-button action-button-border"
+          > 
+            Gravidez 
+            </Button>
         </div>
       </div>
     )

@@ -31,8 +31,13 @@
   
     .calendar th {
       border-bottom: 1px solid rgb(4, 4, 4, 0.16);
+      font-size: 1.56rem;
     }
-    
+
+    .calendar td  {
+      font-size: 2.06rem;
+    }
+
     .calendar th, .calendar td {
       text-align: center;
       padding: 10px;
@@ -41,9 +46,46 @@
     .empty-cell {
       background-color: #f9f9f9;
     }
-  
-    .standart-day {
+
+    .cursor-pointer {
       cursor: pointer;
+    }
+
+    .standart-day, 
+    .cycle-day, 
+    .cycle-day-runing, 
+    .symptom, 
+    .pregnancy-day, 
+    .pregnancy-day-expectative {
+      border: 4px solid;
+      border-radius: 40px;
+      color: white;
+      padding: 8px;
+    }
+
+    .standart-day {
+      border-color:#988A8D;
+      background-color: #988A8D;
+    }
+
+    .cycle-day {
+      background-color: #FF869C;
+    }
+
+    .cycle-day-runing {
+      background-color: #E04F4F;
+    }
+
+    .symptom {
+      border-color: #FFF5A0;
+    }
+
+    .pregnancy-day {
+      border-color: #86BEFF;
+    }
+
+    .pregnancy-day-expectative {
+      background-color: #86BEFF;
     }
   
   }

@@ -4,7 +4,7 @@ import './index.scss';
 import ArrowLeft from '../../../public/assets/arrow-left.svg'
 import ArrowRight from '../../../public/assets/arrow-right.svg'
 
-const Calendar = () => {
+const Calendar = ({daySelected, setDaySelected}) => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [weeks, setWeeks] = useState([]);
 
@@ -23,11 +23,6 @@ const Calendar = () => {
 
     // Calcula os dias que devem ficar em branco no calendário tendo segunda-feira como inicio
     const leadingEmptyCells = Array((firstDayOfMonth + 6) % 7).fill(null);
-
-
-    console.log(firstDayOfMonth, 'firstDayOfMonth')
-    console.log((firstDayOfMonth + 6), 'calc')
-    console.log(((firstDayOfMonth + 6) % 7), 'teste')
 
     // mescla os dois arrays
     const calendarDays = [...leadingEmptyCells, ...days];
@@ -79,7 +74,14 @@ const Calendar = () => {
               <tr key={i}>
                 {week.map((day, index) => (
                   <td key={index} className={day ? "standart-cell" : "empty-cell"}>
-                    <span className="standart-day">{day}</span>
+                    <span 
+                      className={
+                        `cursor-pointer ${ day == new Date().getDate() && "standart-day"}`
+                      }  
+                      onClick={() => setDaySelected(day)}
+                    >
+                      {day}
+                    </span>
                   </td>
                 ))}
               </tr>

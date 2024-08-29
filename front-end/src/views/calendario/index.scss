@@ -29,6 +29,44 @@
         margin-bottom: 20px;
       }
     }
+
+    .actions-button-container {
+      width: 100%;
+      margin: 20px 0px;
+      
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .flex-buttons {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+
+      .action-button {
+        width: 100%;
+        max-width: 300px;
+        height: 55px;
+        border: 0px;
+        border-radius: 20px;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin: 20px;
+      }
+
+      .action-button-border {
+        border: 2px solid #FF869C;
+        background-color: white;
+        color: #FF869C;
+      }
+
+      .action-button-filled {
+        background-color: #FF869C;
+        color: white;
+      }
+    }
 }
 
 .container-count-days {
