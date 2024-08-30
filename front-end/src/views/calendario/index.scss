@@ -28,6 +28,34 @@
         font-weight: 300;
         margin-bottom: 20px;
       }
+
+      .cycle-day-expectative {
+        display: inline-block;
+        text-align: center;
+        width: 60px; 
+        height: 60px; 
+        border: 4px solid;
+        border-radius: 40px;
+        margin-top: -10px;
+        padding-top: 10px;
+        color: white;
+        background-color: #FF869C;
+      }
+
+      .radio-cycle-container {
+        display: flex;
+      }
+
+      .radio-phrase {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: -8px 5px 0px 10px;
+
+        .radio-phrase-label {
+          margin-left: 5px;
+        }
+      }
     }
 
     .actions-button-container {
