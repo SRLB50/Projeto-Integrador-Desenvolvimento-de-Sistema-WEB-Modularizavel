@@ -28,10 +28,8 @@ class Auth {
             .then(resp => resp.json())
             .then(json => json)
             .catch(error => {
-                return {
-                    response : "erro",
-                    erro: error
-                }               
+                alert("Erro ao realizar login: ", error)
+                throw error.toString()
             })
 
         return saveData
