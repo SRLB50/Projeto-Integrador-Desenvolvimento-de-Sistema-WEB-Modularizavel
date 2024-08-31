@@ -38,9 +38,9 @@ fastify.put('/atualizar-gravidez' , gravidezService.finishGravidez) //atualiza d
 
 // Rotas CRUD para sintomas
 fastify.post('/sintomas', sintomasService.createSintoma)
-fastify.get('/sintomas/:id', sintomasService.getSintomaByIdUser)
-fastify.put('/sintomas/:id', sintomasService.updateSintoma)
-fastify.delete('/sintomas/:id', sintomasService.deleteSintoma)
+fastify.get('/sintomas', sintomasService.getSintomaByIdUser)
+fastify.put('/sintomas', sintomasService.updateSintoma)
+fastify.delete('/sintomas', sintomasService.deleteSintoma)
 
 // Roda o server
 const start = async () => {

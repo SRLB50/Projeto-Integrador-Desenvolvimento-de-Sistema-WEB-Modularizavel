@@ -104,7 +104,6 @@ const getCiclos = async (request , reply) => {
             }
         });
 
-        //console.log(ciclos, 'ciclos')
         if(ciclos.length > 0){
             const ciclosAtualizados = ciclos.map(ciclo => {
                 const cicloData = ciclo.get();

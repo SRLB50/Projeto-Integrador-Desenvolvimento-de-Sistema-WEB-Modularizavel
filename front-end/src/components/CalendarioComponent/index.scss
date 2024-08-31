@@ -44,7 +44,7 @@
     }
     
     .empty-cell {
-      background-color: #f9f9f9;
+      background-color: white;
     }
 
     .cursor-pointer {
@@ -57,35 +57,43 @@
     .symptom, 
     .pregnancy-day, 
     .pregnancy-day-expectative {
+      display: inline-block;
+      width: 60px; 
+      height: 60px; 
       border: 4px solid;
       border-radius: 40px;
-      color: white;
-      padding: 1px;
+      border-color:white;
     }
 
     .standart-day {
       border-color:#988A8D;
       background-color: #988A8D;
+      color: white !important;
     }
 
     .cycle-day {
       background-color: #FF869C;
+      color: white !important;
     }
 
     .cycle-day-runing {
       background-color: #E04F4F;
+      color: white !important;
     }
 
     .symptom {
       border-color: #FFF5A0;
+      color: black;
     }
 
     .pregnancy-day {
       border-color: #86BEFF;
+      color: white !important;
     }
 
     .pregnancy-day-expectative {
       background-color: #86BEFF;
+      color: white !important;
     }
   
   }

@@ -1,4 +1,5 @@
 const models = require('../models')
+const { formatedDateToClient , formatedDateToDataBase } = require("../utils/dateUtils")
 
 const createSintoma = async (request, reply) => {
   const { usuario_id, data, descricao } = request.body; 
@@ -20,15 +21,21 @@ const createSintoma = async (request, reply) => {
 }
 
 const getSintomaByIdUser = async (request, reply) => {
-	const { id } = request.params;
+	const { userId } = request.query;
   
 	try {
 	  const sintomas = await models.Sintomas.findAll({
-		where: { usuario_id: id } 
+		where: { usuario_id: userId } 
 	  });
   
 	  if (sintomas.length > 0) {
-		reply.send(sintomas);
+		const sintomaFormatado = sintomas.map(sintoma => { 
+			const sintomaData = sintoma.get()
+			sintomaData.data = formatedDateToClient(sintoma.data)
+			return sintomaData
+		})
+		reply.send(sintomaFormatado)
+		return
 	  } else {
 		reply.status(404).send({ erro: "Nenhum sintoma encontrado para o usuário especificado!" });
 	  }
@@ -38,7 +45,7 @@ const getSintomaByIdUser = async (request, reply) => {
   };
 
 const  updateSintoma = async ( request, reply ) => {
-	const { id } = request.params;
+	const { userId } = request.query;
   	const { descricao } = request.body;
 
 	if(!descricao) {
@@ -47,7 +54,7 @@ const  updateSintoma = async ( request, reply ) => {
 	}
 
 	try {
-		const sintoma = await models.Sintomas.findByPk(id)
+		const sintoma = await models.Sintomas.findByPk(userId)
 		if(sintoma) {
 			sintoma.descricao = descricao
 			await sintoma.save()
@@ -62,7 +69,7 @@ const  updateSintoma = async ( request, reply ) => {
 }
 
 const deleteSintoma = async ( request, reply ) => {
-	const { id } = request.params;
+	const { id } = request.query;
 
 	try {
 		const sintoma = await models.Sintomas.findByPk(id)
