@@ -1,34 +1,77 @@
 /* eslint-disable */
-import { react,  useState } from "react"
-import BotaoModal from "../../components/Modais/BotaoModal"
-import ModalLembrete from "../../components/Modais/ModalLembrete"
-import ModalAtraso from "../../components/Modais/ModalAtraso"
+import "./index.scss"
+import { Form, FormGroup, Label, Input, Button } from "reactstrap"
+import logo from "./../../assets/CycleSense.svg"
+import Auth from "../../services/auth"
+import { useNavigate } from "react-router-dom"
+import { useEffect } from "react"
+
 
 const Login = () => {
-    const [count, setCount] = useState(0)
+  const navigate = useNavigate()
 
-    return (
-      <>
-        <div>
-          teste tela de login
-        </div>
-        <h1>Vite + React</h1>
-        <div className="card">
-          <button onClick={() => setCount((count) => count + 1)}>
-            count is {count}
-          </button>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test HMR
-          </p>
-        </div>
-        <p className="read-the-docs">
-          Click on the Vite and React logos to learn more
-        </p>
-        <BotaoModal />
-        <ModalLembrete />
-        <ModalAtraso daysLate={8}/>
-      </>
-    )
+  useEffect(() => {
+    const token = sessionStorage.getItem("token")
+    if (token && token != "") {
+      navigate("/")
+    }
+  }, [])
+
+  const authService = async () => {
+
+    const dataLogin = {
+      email: document.querySelector("#email").value,
+      senha: document.querySelector("#password").value
+    }
+
+    const valuesAuth = Object.entries(dataLogin).filter(fieldValue => fieldValue[1] == "")
+
+    if (valuesAuth.length == 0) {
+      const sendUser = new Auth(dataLogin.email, dataLogin.senha)
+
+      const returnUser = await sendUser.send()
+
+      if (returnUser.error) {
+        alert(`Erro: ${returnUser.error}`)
+      } else {
+        sessionStorage.setItem("token", returnUser.dados_usuario.token)
+        navigate("/")
+      }
+    }
+  }
+
+  return (
+    <>
+      <div className="main-login">
+        <section id="content-login">
+          <div className="title">
+            <img src={logo} alt="Cycle Sense" />
+          </div>
+
+          <Form>
+            <FormGroup>
+              <Label for="email">E-mail</Label>
+              <Input id="email" name="email" placeholder="Adicione seu e-mail" type="email" />
+            </FormGroup>
+            <FormGroup>
+              <Label for="password">Senha</Label>
+              <Input id="password" name="password" placeholder="Senha" type="password" />
+            </FormGroup>
+            <Button onClick={() => authService()}>
+              Entrar
+            </Button>
+
+            <hr />
+
+            <div className="access" style={{ textAlign: "center" }}>
+              <h5>Não tem acesso? Então cadastre-se</h5>
+            </div>
+          </Form>
+
+        </section>
+      </div>
+    </>
+  )
 }
 
 export default Login
