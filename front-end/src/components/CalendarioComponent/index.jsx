@@ -49,7 +49,12 @@ const Calendar = ({ daySelected, setDaySelected, nextCycle, events }) => {
         ? currentDate.getMonth() + 1
         : currentDate.getMonth() - 1;
     setCurrentDate(new Date(currentDate.getFullYear(), month, 1));
+    setDaySelected("")
   };
+
+  const handleDayClick = (day) => {
+    setDaySelected(`${String(day).length == 1 ? "0" : ""}${day}${currentDate.toLocaleDateString("pt-BR").substring(2)}`)
+  }
 
   //Formata as classes para mostrar os dias correspondentes aos eventos
   const handleImplementEvent = (day) => {
@@ -59,11 +64,12 @@ const Calendar = ({ daySelected, setDaySelected, nextCycle, events }) => {
     const event = events.find(e => e.data === referenceDate);
   
     const classes = {
+      'pregnancy-day': event?.gravidez,
+      'pregnancy-day-expectative': event?.gravidezFim,
       'standart-day': referenceDate === initialDay,
       'symptom': event?.sintoma,
-      'cycle-day': referenceDate === nextCycle,
+      'cycle-day': !event?.gravidez && referenceDate === nextCycle,
       'cycle-day-runing': event?.mestruacao,
-      'pregnancy-day': event?.gravidez
     };
   
     return Object.entries(classes)
@@ -102,10 +108,8 @@ const Calendar = ({ daySelected, setDaySelected, nextCycle, events }) => {
                     className={day ? "standart-cell" : "empty-cell"}
                   >
                     <span
-                      className={`cursor-pointer ${
-                        events?.length > 0 && day && handleImplementEvent(day)
-                      }`}
-                      onClick={() => setDaySelected(day)}
+                      className={`cursor-pointer ${events?.length > 0 && day && handleImplementEvent(day)} ${daySelected?.slice(0, 2) == day ? 'clicked' : ''}`}
+                      onClick={() => handleDayClick(day)}
                     >
                       {day}
                     </span>

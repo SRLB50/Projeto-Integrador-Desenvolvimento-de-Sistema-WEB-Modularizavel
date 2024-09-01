@@ -1,5 +1,5 @@
 const formatedDateToDataBase = (string) => {
-  const [day, month, year] = string.split("-");
+  const [day, month, year] = string.split("/");
   return `${year}-${month}-${day}`;
 };
 

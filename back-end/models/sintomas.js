@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
     const Sintomas = sequelize.define('Sintomas', {
       data: {
-        type: DataTypes.DATE,
+        type: DataTypes.DATEONLY,
         allowNull: false,
       },
       descricao: {

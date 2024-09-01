@@ -1,23 +1,44 @@
-// eslint-disable-next-line no-unused-vars
+/* eslint-disable */
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button, Input } from 'reactstrap';
+import './sintomas.scss'
 
 // eslint-disable-next-line react/prop-types
-const ModalAdicionarSintoma = ({ isOpen, toggle, onSave, sintoma }) => {
+const ModalAdicionarSintoma = ({ isOpen, toggle, sintoma, daySelected, setEvents }) => {
   const [sintomaTexto, setSintomaTexto] = useState('');
 
   useEffect(() => {
     if (sintoma) {
-      setSintomaTexto(sintoma);
+      setSintomaTexto(sintoma?.descricao);
     } else {
       setSintomaTexto('');
     }
   }, [sintoma, isOpen]);
 
   const handleSave = () => {
-    if (sintomaTexto.trim()) {
-      onSave(sintomaTexto);
-      setSintomaTexto('');
+    console.log(daySelected, 'daySelected')
+    if(sintomaTexto) {
+      axios.post(`http://localhost:3000/sintomas`, 
+        {userId: 1, data: daySelected, descricao: sintomaTexto } 
+      )
+      .then((response) => {
+
+        setEvents(event => {
+          return [...event, {
+            mestruacao: false,
+            sintoma: true,
+            gravidez: false,
+            data: daySelected,
+          }]
+        })
+
+        setSintomaTexto('');
+        toggle()
+      }).catch(error => {
+        console.log(error, 'error')
+        alert("erro ao cadastrar sintoma!")
+      })
     }
   };
 

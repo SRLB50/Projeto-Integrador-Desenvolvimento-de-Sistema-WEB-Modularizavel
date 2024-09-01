@@ -2,6 +2,7 @@ import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import logo from './../../assets/CycleSense.svg';
 import closeButton from './../../assets/closeButton.svg';
 import { useEffect, useState } from "react";
+import './sintomas.scss'
 
 function ModalLembrete() {
 

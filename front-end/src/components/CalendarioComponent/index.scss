@@ -56,7 +56,8 @@
     .cycle-day-runing, 
     .symptom, 
     .pregnancy-day, 
-    .pregnancy-day-expectative {
+    .pregnancy-day-expectative,
+    .clicked {
       display: inline-block;
       width: 60px; 
       height: 60px; 
@@ -88,12 +89,16 @@
 
     .pregnancy-day {
       border-color: #86BEFF;
-      color: white !important;
+      color: black;
     }
 
     .pregnancy-day-expectative {
       background-color: #86BEFF;
       color: white !important;
+    }
+
+    .clicked {
+      border-color: black;
     }
   
   }

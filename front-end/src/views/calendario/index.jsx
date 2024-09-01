@@ -4,15 +4,34 @@ import { react,  useState, useEffect } from "react"
 import axios from 'axios'
 import {Button} from 'reactstrap'
 import CalendarioComponent from '../../components/CalendarioComponent/index'
+import ModalAdicionarSintoma from '../../components/Modais/ModalAdicionarSintomas.jsx';
+import ModalVisualizarSintoma from '../../components/Modais/ModalVisualizarSintomas.jsx';
 import './index.scss'
 
 const Calendario = () => {
-    const [count, setCount] = useState(0)
     const [daySelected, setDaySelected] = useState("")
     const [daysUntilNextCycle, setDaysUntilNextCycle] = useState(0)
     const [firstCycle, setFirstCycle] = useState(false)
     const [nextCycle, setNextCycle] = useState()
     const [events, setEvents] = useState([])
+
+    //modais
+    const [modalAdicionarOpen, setModalAdicionarOpen] = useState(false)
+    const [modalVisualizarOpen, setModalVisualizarOpen] = useState(false)
+    const [sintomaEditando, setSintomaEditando] = useState('')
+
+    const toggleAdicionar = () => setModalAdicionarOpen(!modalAdicionarOpen)
+    const toggleVisualizar = () => setModalVisualizarOpen(!modalVisualizarOpen)
+
+    const handleExcluirSintoma = () => {
+      setSintomaEditando('')
+      setModalVisualizarOpen(false)
+    }
+
+    const handleEditarSintoma = () => {
+      setModalVisualizarOpen(false)
+      setModalAdicionarOpen(true)
+    }
 
     const formatDate = (date) => {
       const day = date.getDate().toString().padStart(2, '0');
@@ -47,39 +66,43 @@ const Calendario = () => {
     useEffect(() => {
 
       //Retorna o próximo ciclo
-      axios.post(`http://localhost:3000/dias-ciclo`, {userId: 2} )
+      axios.post(`http://localhost:3000/dias-ciclo`, {userId: 1} )
       .then(response => {
         setDaysUntilNextCycle(response?.data?.dias) 
         setNextCycle(response?.data?.data)
       })
 
       //Retorna os ciclos
-      const getCycle = axios.get(`http://localhost:3000/ciclos`, {params: {userId: 2}} )
+      const getCycle = axios.get(`http://localhost:3000/ciclos`, {params: {userId: 1}} )
 
       //Retorna os sintomas
-      const getSympton = axios.get(`http://localhost:3000/sintomas`, {params: {userId: 2}} )
+      const getSympton = axios.get(`http://localhost:3000/sintomas`, {params: {userId: 1}} )
 
       //Retorna os sintomas
-      const getPregnancy = axios.get(`http://localhost:3000/gravidezes`, {params: {userId: 2}} )
+      const getPregnancy = axios.get(`http://localhost:3000/gravidezes`, {params: {userId: 1}} )
         
       axios.all([getCycle, getSympton, getPregnancy])
         .then(axios.spread((cycleResponse, symptonResponse, pregnancyResponse) => {
           let responsesFormated = []
 
-          //Inicia a estrutura de eventos para renderização no componente de calendário
-          cycleResponse.data.forEach(item => {
-            const dataArray = handleGetDatesBetween(item.inicio, item.fim)
+          if(cycleResponse?.data?.message == "Nenhum ciclo registrado") {
+            setFirstCycle(true)
+          } else {
+            //Inicia a estrutura de eventos para renderização no componente de calendário
+            cycleResponse?.data?.forEach(item => {
+              const dataArray = handleGetDatesBetween(item.inicio, item.fim)
 
-            dataArray.map(data => 
-              responsesFormated.push(
-                {
-                  mestruacao: true,
-                  sintoma: false,
-                  gravidez: false,
-                  data: data.toLocaleDateString('pt-BR')
-                }
-              ))
-          })
+              dataArray.map(data => 
+                responsesFormated.push(
+                  {
+                    mestruacao: true,
+                    sintoma: false,
+                    gravidez: false,
+                    data: data.toLocaleDateString('pt-BR')
+                  }
+                ))
+            })
+          }
 
           //Adiciona os dias de eventos de sintomas já cadastrados
           symptonResponse?.data?.forEach(item => {
@@ -98,24 +121,27 @@ const Calendario = () => {
           })
 
           //Adiciona os dias de eventos de gravidez já cadastrados
-          // pregnancyResponse?.data?.forEach(item => {
-          //   const existingIndex = responsesFormated.findIndex(element => element.data === item.data);
+
+          const getDaysOfPregnancy = handleGetDatesBetween(pregnancyResponse.data[0].inicio, pregnancyResponse.data[0].fim)
+
+          getDaysOfPregnancy?.forEach(item => {
+            const existingIndex = responsesFormated.findIndex(element => element.data === item);
             
-          //   if (existingIndex !== -1) {
-          //     responsesFormated[existingIndex].sintoma = true;
-          //   } else {
-          //     responsesFormated.push({
-          //       mestruacao: false,
-          //       sintoma: false,
-          //       gravidez: true,
-          //       data: item.data
-          //     });
-          //   }
-          // });
+            if (existingIndex !== -1) {
+              responsesFormated[existingIndex].gravidez = true;
+            } else {
+              responsesFormated.push({
+                mestruacao: false,
+                sintoma: false,
+                gravidez: true,
+                data: item.toLocaleDateString('pt-BR'),
+                gravidezFim: pregnancyResponse.data[0].fim == item,
+              });
+            }
+          });
 
           setEvents(responsesFormated)
 
-          console.log(responsesFormated, 'responsesFormated')
         })).catch(error => {
           console.error('Erro nas requisições:', error);
         });
@@ -125,72 +151,128 @@ const Calendario = () => {
 
     const handleInitCycle = () => {
       //Retorna os ciclos
-      axios.post(`http://localhost:3000/iniciar-ciclo`, {userId: 2} )
+      axios.post(`http://localhost:3000/iniciar-ciclo`, {userId: 1} )
       .then(response => {
-        console.log(response, 'response')
-        if(response?.data?.message == "Nenhum ciclo registrado") {
-          setFirstCycle(true)
-        }
+        console.log(response, 'response')    
       })
     }
 
+    // Inicia a gravidez
+    const handleStartPregnancy = () => {
+      axios.post(`http://localhost:3000/iniciar-gravidez`, {userId: 1, dataInicio:"28/08/2024"} )
+      .then((response) => {
+        const getDaysOfPregnancy = handleGetDatesBetween(new Date().toLocaleDateString('pt-BR'), response.data.dataFim)
+        const responsesFormated = [...events]
+
+        getDaysOfPregnancy?.forEach(item => {
+          const existingIndex = responsesFormated.findIndex(element => element.data === item);
+          
+          if (existingIndex !== -1) {
+            responsesFormated[existingIndex].gravidez = true;
+          } else {
+            responsesFormated.push({
+              mestruacao: false,
+              sintoma: false,
+              gravidez: true,
+              data: item.toLocaleDateString('pt-BR'),
+              gravidezFim: response.data.dataFim == item,
+            });
+          }
+        });
+
+        setEvents(responsesFormated)
+      }).catch(error => {
+        console.log(error)
+      })
+    }
+
+    const handleCallSintomaModal = () => {
+      if(events.some(item => item?.data == daySelected && item?.sintoma)) {
+        toggleVisualizar()
+      } else {
+        toggleAdicionar()
+      }
+    }
+
     return (
-      <div className="container-calendar-screen">
-        <div className="welcome-user-container">
-          <h2 className="main-title">Como está o seu cíclo hoje, <span className="bold-phrase prominence-word">Marcela</span>?</h2>
-          <div className="counter-day-container">
-            <h3 className="bold-phrase">{day} de {month} <span className="prominence-word">{year}</span></h3>
-            {
-              firstCycle && 
-              <h3>Primeira menstruação ainda não cadastrada.</h3>
-            }
-            {
-              !firstCycle && daysUntilNextCycle > 0 &&
-              <h3>Faltam <span className="cycle-day-expectative">{daysUntilNextCycle}</span> dias para sua menstruação.</h3>
-            }
-            {
-              !firstCycle && daysUntilNextCycle == 0 &&
-              <div className="radio-cycle-container">
-                <h3>Sua menstruação já iniciou ?</h3>
+      <>
+        <ModalAdicionarSintoma
+          isOpen={modalAdicionarOpen}
+          toggle={toggleAdicionar}
+          sintoma={sintomaEditando}
+          daySelected={daySelected}
+          setEvents={setEvents}
+        />
 
-                <div className="radio-phrase">
-                  <input type="radio" id="on" name="cycle" value="Sim"/>
-                  <label for="on" className="radio-phrase-label">Sim</label>
-                </div>
-                
-                <div className="radio-phrase">
-                  <input type="radio" id="off" name="cycle" value="Não"/>
-                  <label for="off" className="radio-phrase-label">Não</label>
-                </div>
-              </div>
-            }
+        <ModalVisualizarSintoma
+          isOpen={modalVisualizarOpen}
+          toggle={toggleVisualizar}
+          onDelete={handleExcluirSintoma}
+          onEdit={handleEditarSintoma}
+          atualizarSintoma={setSintomaEditando}
+          daySelected={daySelected}
+        />
 
+        <div className="container-calendar-screen">
+          <div className="welcome-user-container">
+            <h2 className="main-title">Como está o seu cíclo hoje, <span className="bold-phrase prominence-word">Marcela</span>?</h2>
+            <div className="counter-day-container">
+              <h3 className="bold-phrase">{day} de {month} <span className="prominence-word">{year}</span></h3>
+              {
+                firstCycle && 
+                <h3>Primeira menstruação ainda não cadastrada.</h3>
+              }
+              {
+                !firstCycle && daysUntilNextCycle > 0 &&
+                <h3>Faltam <span className="cycle-day-expectative">{daysUntilNextCycle}</span> dias para sua menstruação.</h3>
+              }
+              {
+                !firstCycle && daysUntilNextCycle <= 0 &&
+                <div className="radio-cycle-container">
+                  <h3>Sua menstruação já iniciou ?</h3>
+
+                  <div className="radio-phrase">
+                    <input type="radio" id="on" name="cycle" value="Sim"/>
+                    <label for="on" className="radio-phrase-label">Sim</label>
+                  </div>
+                  
+                  <div className="radio-phrase">
+                    <input type="radio" id="off" name="cycle" value="Não"/>
+                    <label for="off" className="radio-phrase-label">Não</label>
+                  </div>
+                </div>
+              }
+
+            </div>
+          </div>
+          <div className="">
+            <CalendarioComponent daySelected={daySelected} setDaySelected={setDaySelected} nextCycle={nextCycle} events={events}/>
+          </div>
+          <div className="actions-button-container">
+            <div className="flex-buttons">
+              <Button 
+                className="action-button action-button-filled"
+                onClick={() => handleInitCycle()}
+              > 
+                Menstruação 
+              </Button>
+              <Button 
+                className="action-button action-button-filled"
+                onClick={() => handleCallSintomaModal()}
+                disabled={!daySelected}
+              > 
+                Sintoma 
+              </Button>
+            </div>
+            <Button 
+              className="action-button action-button-border"
+              onClick={() => handleStartPregnancy()}
+            > 
+              Gravidez 
+            </Button>
           </div>
         </div>
-        <div className="">
-          <CalendarioComponent daySelected={daySelected} setDaySelected={setDaySelected} nextCycle={nextCycle} events={events}/>
-        </div>
-        <div className="actions-button-container">
-          <div className="flex-buttons">
-            <Button 
-              className="action-button action-button-filled"
-              onClick={() => handleInitCycle()}
-            > 
-              Menstruação 
-            </Button>
-            <Button 
-              className="action-button action-button-filled"
-            > 
-              Sintoma 
-            </Button>
-          </div>
-          <Button 
-            className="action-button action-button-border"
-          > 
-            Gravidez 
-          </Button>
-        </div>
-      </div>
+      </>
     )
 }
 
