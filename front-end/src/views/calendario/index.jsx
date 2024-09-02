@@ -8,6 +8,13 @@ import ModalAdicionarSintoma from '../../components/Modais/ModalAdicionarSintoma
 import ModalVisualizarSintoma from '../../components/Modais/ModalVisualizarSintomas.jsx';
 import './index.scss'
 
+import StopWhite from '../../assets/stop-white.svg'
+import PlusWhite from '../../assets/plus-white.svg'
+import PlusPink from '../../assets/plus-pink.svg'
+import NegativePink from '../../assets/negative-pink.svg'
+import Play from '../../assets/play.svg'
+import Eye from '../../assets/eye.svg'
+
 const Calendario = () => {
     const [daySelected, setDaySelected] = useState("")
     const [daysUntilNextCycle, setDaysUntilNextCycle] = useState(0)
@@ -254,6 +261,7 @@ const Calendario = () => {
                 className="action-button action-button-filled"
                 onClick={() => handleInitCycle()}
               > 
+                <img src={Play} />
                 Menstruação 
               </Button>
               <Button 
@@ -261,6 +269,12 @@ const Calendario = () => {
                 onClick={() => handleCallSintomaModal()}
                 disabled={!daySelected}
               > 
+                {
+                  daySelected && events?.some(item => item?.data == daySelected) ? 
+                  <img src={Eye} />
+                  : 
+                  <img src={PlusWhite} />
+                }
                 Sintoma 
               </Button>
             </div>
@@ -268,6 +282,7 @@ const Calendario = () => {
               className="action-button action-button-border"
               onClick={() => handleStartPregnancy()}
             > 
+              <img src={PlusPink} />
               Gravidez 
             </Button>
           </div>

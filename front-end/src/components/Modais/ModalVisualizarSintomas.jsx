@@ -30,8 +30,9 @@ const ModalVisualizarSintoma = ({ isOpen, toggle, onDelete, onEdit, atualizarSin
         console(error, 'error')
       })  
     }
-  },[daySelected, isOpen])
 
+    return () => {}
+  },[daySelected, isOpen])
 
   return (
     <>
@@ -39,7 +40,7 @@ const ModalVisualizarSintoma = ({ isOpen, toggle, onDelete, onEdit, atualizarSin
         <ModalHeader toggle={toggle}>
             Seus sintomas neste dia :
             <Button id='edit-icon' onClick={onEdit}>
-                <img src={pencilIcon} alt="" />
+              <img src={pencilIcon} alt="" />
             </Button>
         </ModalHeader>
         <ModalBody>

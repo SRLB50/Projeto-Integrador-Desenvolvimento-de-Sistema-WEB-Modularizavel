@@ -14,10 +14,11 @@ const ModalAdicionarSintoma = ({ isOpen, toggle, sintoma, daySelected, setEvents
     } else {
       setSintomaTexto('');
     }
+
+    return () => {}
   }, [sintoma, isOpen]);
 
   const handleSave = () => {
-    console.log(daySelected, 'daySelected')
     if(sintomaTexto) {
       axios.post(`http://localhost:3000/sintomas`, 
         {userId: 1, data: daySelected, descricao: sintomaTexto } 
