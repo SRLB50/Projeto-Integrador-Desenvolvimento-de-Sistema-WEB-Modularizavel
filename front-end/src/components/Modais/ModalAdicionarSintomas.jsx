@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button, Input } from 'reactstrap';
-import './sintomas.scss'
+import './modais.scss';
 
 // eslint-disable-next-line react/prop-types
 const ModalAdicionarSintoma = ({ isOpen, toggle, sintoma, daySelected, setEvents }) => {

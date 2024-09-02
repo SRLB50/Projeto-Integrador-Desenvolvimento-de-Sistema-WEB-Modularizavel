@@ -4,8 +4,8 @@ import axios from "axios";
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button, List,  } from 'reactstrap';
 import ModalConfirmacao from './ModalConfirmacao';
 import pencilIcon from './../../assets/Icon-pencil.svg';
-import './sintomas.scss'
 import { useState } from 'react';
+import './modais.scss';
 
 // eslint-disable-next-line react/prop-types
 const ModalVisualizarSintoma = ({ isOpen, toggle, onDelete, onEdit, atualizarSintoma, daySelected }) => {

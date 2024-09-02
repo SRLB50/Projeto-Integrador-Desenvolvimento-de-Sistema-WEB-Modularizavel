@@ -48,7 +48,7 @@ const Login = () => {
             <img src={logo} alt="Cycle Sense" />
           </div>
 
-          <Form>
+          <Form className="form-login">
             <FormGroup>
               <Label for="email">E-mail</Label>
               <Input id="email" name="email" placeholder="Adicione seu e-mail" type="email" />
@@ -57,11 +57,11 @@ const Login = () => {
               <Label for="password">Senha</Label>
               <Input id="password" name="password" placeholder="Senha" type="password" />
             </FormGroup>
-            <Button onClick={() => authService()}>
+            <Button onClick={() => authService()} className="button-login">
               Entrar
             </Button>
 
-            <hr />
+            <hr className="hr-login"/>
 
             <div className="access" style={{ textAlign: "center" }}>
               <h5>Não tem acesso? Então cadastre-se</h5>
