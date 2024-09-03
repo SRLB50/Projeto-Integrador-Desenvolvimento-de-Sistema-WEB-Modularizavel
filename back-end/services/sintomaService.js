@@ -52,29 +52,29 @@ const getSintomaByIdUser = async (request, reply) => {
 	}
   };
 
-const  updateSintoma = async ( request, reply ) => {
-	const { userId } = request.query;
-  	const { descricao } = request.body;
-
-	if(!descricao) {
-		reply.status(400).send({erro: 'Campo descrição é obrigatório!'})
-		return
+  const updateSintoma = async (request, reply) => {
+	const { id, descricao } = request.body;
+  
+	if (!descricao) {
+	  reply.status(400).send({ erro: 'Campo descrição é obrigatório!' });
+	  return;
 	}
-
+  
 	try {
-		const sintoma = await models.Sintomas.findByPk(userId)
-		if(sintoma) {
-			sintoma.descricao = descricao
-			await sintoma.save()
-
-			reply.send({message: 'Alteração realizada com sucesso!'})
-		} else {
-			reply.status(404).send({ erro: "nenhum sintoma encontrado!"})
-		}
+	  const sintoma = await models.Sintomas.findByPk(id);
+	  if (sintoma) {
+		sintoma.descricao = descricao;
+		await sintoma.save();
+  
+		reply.send({ message: 'Alteração realizada com sucesso!' });
+	  } else {
+		reply.status(404).send({ erro: 'Nenhum sintoma encontrado!' });
+	  }
 	} catch (err) {
-		reply.status(500).send({ erro: 'Erro ao obter sintomas.', details: err})
+	  reply.status(500).send({ erro: 'Erro ao atualizar sintoma.', details: err });
 	}
-}
+  };
+  
 
 const deleteSintoma = async ( request, reply ) => {
 	const { id } = request.query;

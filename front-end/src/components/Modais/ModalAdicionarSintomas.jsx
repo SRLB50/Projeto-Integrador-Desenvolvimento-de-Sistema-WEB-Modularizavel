@@ -19,7 +19,7 @@ const ModalAdicionarSintoma = ({ isOpen, toggle, sintoma, daySelected, setEvents
   }, [sintoma, isOpen]);
 
   const handleSave = () => {
-    if(sintomaTexto) {
+    if(sintomaTexto && !sintoma) {
       axios.post(`http://localhost:3000/sintomas`, 
         {userId: 1, data: daySelected, descricao: sintomaTexto } 
       )
@@ -34,6 +34,18 @@ const ModalAdicionarSintoma = ({ isOpen, toggle, sintoma, daySelected, setEvents
           }]
         })
 
+        setSintomaTexto('');
+        toggle()
+      }).catch(error => {
+        console.log(error, 'error')
+        alert("erro ao cadastrar sintoma!")
+      })
+    } else {
+      axios.put(`http://localhost:3000/sintomas`, 
+        {id: sintoma.id, descricao: sintomaTexto } 
+      )
+      .then((response) => {
+        alert('Sintoma atualizado com sucesso!')
         setSintomaTexto('');
         toggle()
       }).catch(error => {
