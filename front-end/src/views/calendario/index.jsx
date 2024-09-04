@@ -30,11 +30,6 @@ const Calendario = () => {
     const toggleAdicionar = () => setModalAdicionarOpen(!modalAdicionarOpen)
     const toggleVisualizar = () => setModalVisualizarOpen(!modalVisualizarOpen)
 
-    const handleExcluirSintoma = () => {
-      setSintomaEditando('')
-      setModalVisualizarOpen(false)
-    }
-
     const handleEditarSintoma = () => {
       setModalVisualizarOpen(false)
       setModalAdicionarOpen(true)
@@ -46,6 +41,14 @@ const Calendario = () => {
       const year = date.getFullYear();
       return { day, month, year };
     };
+
+    const formatToAmericanDate = (date) => {
+       // Divide a string da data em ano, mês e dia
+      const [day, month, year] = date.split('/');
+
+      // Retorna a data no formato Americano
+      return `${month}-${day}-${year}`;
+    }
 
     const { day, month, year } = formatDate(new Date());
 
@@ -214,10 +217,10 @@ const Calendario = () => {
         <ModalVisualizarSintoma
           isOpen={modalVisualizarOpen}
           toggle={toggleVisualizar}
-          onDelete={handleExcluirSintoma}
           onEdit={handleEditarSintoma}
           atualizarSintoma={setSintomaEditando}
           daySelected={daySelected}
+          setEvents={setEvents}
         />
 
         <div className="container-calendar-screen">
@@ -260,6 +263,7 @@ const Calendario = () => {
               <Button 
                 className="action-button action-button-filled"
                 onClick={() => handleInitCycle()}
+                disabled={daySelected && events?.some(item => item?.data == daySelected && item.gravidez)}
               > 
                 <img src={Play} />
                 Menstruação 
@@ -281,6 +285,7 @@ const Calendario = () => {
             <Button 
               className="action-button action-button-border"
               onClick={() => handleStartPregnancy()}
+              disabled={!daySelected || (new Date(formatToAmericanDate(daySelected)) < new Date() )}
             > 
               <img src={PlusPink} />
               Gravidez 

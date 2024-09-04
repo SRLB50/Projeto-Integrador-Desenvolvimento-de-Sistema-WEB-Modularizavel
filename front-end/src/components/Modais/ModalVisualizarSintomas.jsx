@@ -1,4 +1,4 @@
-// src/components/ModalVisualizarSintoma.js
+/* eslint-disable */
 import React, { useEffect } from 'react';
 import axios from "axios";
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button, List,  } from 'reactstrap';
@@ -8,7 +8,7 @@ import { useState } from 'react';
 import './modais.scss';
 
 // eslint-disable-next-line react/prop-types
-const ModalVisualizarSintoma = ({ isOpen, toggle, onDelete, onEdit, atualizarSintoma, daySelected }) => {
+const ModalVisualizarSintoma = ({ isOpen, toggle, onEdit, atualizarSintoma, daySelected, setEvents }) => {
   const [modalConfirmOpen, setModalConfirmOpen] = React.useState(false);
   const [modalContent, setModalContent] = useState("")
   const toggleConfirm = () => setModalConfirmOpen(!modalConfirmOpen);
@@ -34,6 +34,24 @@ const ModalVisualizarSintoma = ({ isOpen, toggle, onDelete, onEdit, atualizarSin
     return () => {}
   },[daySelected, isOpen])
 
+
+  const handleExcludeSyntom = () => {
+    console.log(modalContent, 'modalContent')
+    console.log({params: {id: modalContent?.id}}, 'teste')
+    axios.delete(`http://localhost:3000/sintomas`, {params: {id: modalContent?.id}} )
+      .then(response => {
+    
+        setEvents(event => {
+          return event.map(item => { return {...item, sintoma:item?.data == modalContent?.data ? false : item.sintoma} })
+        })
+        alert('Sintoma deletado com sucesso!')
+        atualizarSintoma("")
+        toggle()
+      }).catch(error => {
+        console(error, 'error')
+      })  
+  }
+
   return (
     <>
       <Modal isOpen={isOpen} toggle={toggle} centered={true}>
@@ -54,7 +72,7 @@ const ModalVisualizarSintoma = ({ isOpen, toggle, onDelete, onEdit, atualizarSin
         </ModalFooter>
       </Modal>
 
-      <ModalConfirmacao isOpen={modalConfirmOpen} toggle={toggleConfirm} onConfirm={onDelete} />
+      <ModalConfirmacao isOpen={modalConfirmOpen} toggle={toggleConfirm} onConfirm={handleExcludeSyntom} />
     </>
   );
 };

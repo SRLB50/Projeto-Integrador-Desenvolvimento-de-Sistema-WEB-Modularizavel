@@ -24,7 +24,7 @@ const ModalAdicionarSintoma = ({ isOpen, toggle, sintoma, daySelected, setEvents
         {userId: 1, data: daySelected, descricao: sintomaTexto } 
       )
       .then((response) => {
-
+        alert('Sintoma adicionado com sucesso!')
         setEvents(event => {
           return [...event, {
             mestruacao: false,
