@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import Home from '../views/home/index';
 import Login from '../views/login/index';
 import TelaInicial from '../components/TelaInicial/TelaInicial';
+import CadastroUsuario from './views/telaCadastro/index';
 
 const Router = () => {
   return (
@@ -13,6 +14,7 @@ const Router = () => {
         <Route path='dicas' element={<TelaInicial />} />
       </Route>
       <Route path="/login" element={<Login />} />
+      <Route path='/register' element={<CadastroUsuario />} />
     </Routes>
   );
 };

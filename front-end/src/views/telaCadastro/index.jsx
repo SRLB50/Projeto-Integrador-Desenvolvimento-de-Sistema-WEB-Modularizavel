@@ -13,16 +13,18 @@ import {
   Label,
   Input
 } from 'reactstrap';
+import { useNavigate } from "react-router-dom";
 
 // Componente de Cadastro
 function CadastroUsuario() {
 
   const [fields, setFields] = useState([])
-  const [showBack, setShowBack] = useState(false)
   const [lastField, setLastField] = useState(false)
   const [showField, setShowField] = useState(0)
 
   const [input, setInput] = useState(0)
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     const getInput = InputRegister({ position: showField })
@@ -49,10 +51,11 @@ function CadastroUsuario() {
 
         const send = await register.send()
 
-        if (send.error) {
+        if (["2", "3"].includes(send.status)) {
           alert("Erro ao realizar cadastro!! " + send.error)
         }else{
-          
+          sessionStorage.setItem("token", send.token)
+          navigate("/")
         }
       }
     }
@@ -65,22 +68,9 @@ function CadastroUsuario() {
 
       setFields([...fields, { field: input.id, value: valueField, label: input.label }])
       setShowField((...prev) => Number(prev[0]) + 1)
-      setShowBack(true)
     } else {
       alert("Campo vazio!")
     }
-  }
-
-  const backField = () => {
-
-    const infos = InputRegister({ position: showField - 1 })
-    setShowField(showField - 1)
-
-    const { id } = infos
-
-    const valueField = fields.filter(field => field.field == id)
-
-    document.querySelector(`#${id}`).value = valueField[0].value
   }
 
   return (
@@ -91,7 +81,6 @@ function CadastroUsuario() {
         </div>
 
         <Form className="form-register">
-          {/* {showBack && (<div className="back" onClick={() => backField()}> <img src={back} alt="Back" /></div>)} */}
 
           {input ? (
             <FormGroup>
