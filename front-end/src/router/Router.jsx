@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import Home from '../views/home/index';
 import Login from '../views/login/index';
 import TelaInicial from '../components/TelaInicial/TelaInicial';
-import CadastroUsuario from './views/telaCadastro/index';
+import CadastroUsuario from '../views/telaCadastro/index';
 
 const Router = () => {
   return (
