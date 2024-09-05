@@ -3,7 +3,7 @@ import { react, useState } from 'react'
 import { Input, FormGroup, Label } from 'reactstrap'
 import './index.scss'
 
-const InputElement = ({id, label, value, setValue, name,  ...props}) => {
+const InputElement = ({id, label, value, setValue, name, disabled,  ...props}) => {
 
   return (
     <FormGroup>
@@ -13,6 +13,7 @@ const InputElement = ({id, label, value, setValue, name,  ...props}) => {
         name={name}
         value={value} 
         onChange={(e) => {setValue(e.target.value)}} 
+        disabled={disabled}
         className=''
       />
     </FormGroup>
