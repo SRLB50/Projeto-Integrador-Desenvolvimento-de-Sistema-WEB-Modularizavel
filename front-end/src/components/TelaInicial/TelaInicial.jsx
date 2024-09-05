@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import CalendarioSemanal from "../CalendarioSemanal/CalendarioSemanal"
 import CardBlog from "../CardBlog/CardBlog"
-//import {jwtDecode} from "jwt-decode"
+import {jwtDecode} from "jwt-decode"
 import "./TelaInicial.scss"
 import { useNavigate } from "react-router-dom"
 import Ciclo from "../../services/ciclo"
@@ -29,10 +29,10 @@ const TelaInicial = () => {
     }, [])
     useEffect(() => {
         initCards()
-        const token = mockAuth
+        const token = sessionStorage.getItem("token")
         if (token) {
-            //const decodeToken = jwtDecode(token)
-            const {nome, id, ciclo} = token[0]
+            const decodeToken = jwtDecode(token)
+            const {nome, id, ciclo} = decodeToken
             
             setCiclo(ciclo)
             setName(nome)
