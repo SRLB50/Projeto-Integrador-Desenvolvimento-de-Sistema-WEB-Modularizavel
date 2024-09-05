@@ -84,7 +84,7 @@ const TelaInicial = () => {
                         {  !errorCiclo ?
                                 ciclo > 0 
                                 ? 
-                                    (<span>Faltam <span className="circle">{ciclo}</span> dias para sua menstruação</span> ) 
+                                    (<span style={{display: "flex", gap: "10px", alignItems: "center"}}>Faltam <span className="circle">{ciclo}</span> dias para sua menstruação</span> ) 
                                 : 
                                     ciclo < 0 
                                         ? <h5 className="pink-text"> {Math.abs(ciclo)} dia(s) da sua menstruação inicial!</h5> 

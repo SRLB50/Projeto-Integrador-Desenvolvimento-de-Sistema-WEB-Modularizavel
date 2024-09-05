@@ -7,12 +7,10 @@ const CalendarioSemanal = ({ actualDate, dayOnWeek, month, year, ciclo, periodUs
     const [period, setPeriod] = useState([])
     
     useEffect(() => {
-        if (periodUser != "") {
-            const instance = new CountCalendar(dayOnWeek, actualDate, month, year)
-            setDays(instance.days())
-    
-            setPeriod(calcNextPeriod())
-        }
+        const instance = new CountCalendar(dayOnWeek, actualDate, month, year)
+        setDays(instance.days())
+
+        setPeriod(calcNextPeriod())
     }, [periodUser])
 
     const calcNextPeriod = () => {
