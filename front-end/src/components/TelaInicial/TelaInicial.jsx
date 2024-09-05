@@ -34,7 +34,7 @@ const TelaInicial = () => {
             const decodeToken = jwtDecode(token)
             const {nome, id} = decodeToken
             
-            getCiclo()
+            getCiclo(id)
             setName(nome)
             setId(id)
         }else{
