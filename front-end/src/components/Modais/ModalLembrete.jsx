@@ -2,10 +2,11 @@ import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import logo from './../../assets/CycleSense.svg';
 import closeButton from './../../assets/closeButton.svg';
 import { useEffect, useState } from "react";
+import './modais.scss';
 
 function ModalLembrete() {
 
-    const [ isOpen , setIsOpen] = useState(false);
+    const [ isOpen , setIsOpen] = useState(true);
     const toggle = () => setIsOpen(false);
     useEffect(() => {
         setIsOpen(true);

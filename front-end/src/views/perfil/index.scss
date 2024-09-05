@@ -1,0 +1,21 @@
+.perfil-container {
+  width: 100%;
+  margin: 60px;
+  display: flex;
+
+
+  .perfil-card {
+    width: 100%;
+    max-width: 575px;
+    border-radius: 16px;
+    font-weight: 700;
+
+    box-shadow: -2px 1px 12px 4px rgb(4, 4, 4, 0.16);
+    -webkit-box-shadow: -2px 1px 12px 4px rgb(4, 4, 4, 0.16);
+    -moz-box-shadow: -2px 1px 12px 4px rgb(4, 4, 4, 0.16);
+
+    .perfil-card-body {
+      padding: 60px;
+    }
+   }
+}

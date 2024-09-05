@@ -103,14 +103,18 @@ const getCiclos = async (request , reply) => {
                 usuario_id: userId,
             }
         });
+
         if(ciclos.length > 0){
             const ciclosAtualizados = ciclos.map(ciclo => {
                 const cicloData = ciclo.get();
-                cicloData.inicio = formatedDateToClient(cicloData.inicio);
-                cicloData.fim = formatedDateToClient(cicloData.fim);
+                cicloData.inicio = formatedDateToClient(cicloData?.inicio);
+                cicloData.fim = formatedDateToClient(cicloData?.fim);
                 return cicloData;
             });
+
+            console.log(ciclosAtualizados, 'ciclosAtualizados')
             reply.send(ciclosAtualizados)
+            return
         };
       reply.send({ message: 'Nenhum ciclo registrado'});
     } catch (error) {

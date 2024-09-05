@@ -1,23 +1,15 @@
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import logo from './../../assets/CycleSense.svg';
 import closeButton from './../../assets/closeButton.svg';
-import { useEffect, useState } from "react";
+import './modais.scss';
 
 // eslint-disable-next-line react/prop-types
-function ModalAtraso({ daysLate }) {
-    const [isOpen, setIsOpen] = useState(false);
+function ModalAtraso({ daysLate, modalAtraso, setModalAtraso }) {
     
-    const toggle = () => setIsOpen(false);
-    
-    useEffect(() => {
-        if (daysLate > 0) {
-            setIsOpen(true);
-        }
-    }, [daysLate]);
-
+    const toggle = () => setModalAtraso(false);
     return (
         <>
-            <Modal isOpen={isOpen} toggle={toggle} centered={true}>
+            <Modal isOpen={modalAtraso} toggle={toggle} centered={true}>
                 <ModalHeader>
                     <img src={logo} id='logo' alt="CycleSense" />
                     <Button id="edit-icon" onClick={toggle}>

@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
+import './modais.scss';
 
 // eslint-disable-next-line react/prop-types
 const ModalConfirmacao = ({ isOpen, toggle, onConfirm }) => {

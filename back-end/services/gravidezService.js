@@ -42,7 +42,7 @@ const startGravidez = async (request , reply) => {
         if (existingGravidez) {
             return reply.code(400).send({ error: 'Já existe uma gravidez registrado para o mesmo período ou sobrepondo-o.' });
         }
-        console.log(dataInicioObj)
+        
         const novaGravidez = await usuario.createGravidez({
             inicio: dataInicioObj,
             fim: dataFim,

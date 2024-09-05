@@ -1,0 +1,13 @@
+.dicas-Container {
+    width: 100%;
+    margin-top: 60px;
+}
+
+#dicas-saude {
+    margin-top: 20px;
+
+    .cards {
+        display: flex;
+        gap: 10px;
+    }
+}
