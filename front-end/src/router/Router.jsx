@@ -5,6 +5,7 @@ import Calendario from '../views/calendario/index';
 import Perfil from '../views/perfil/index';
 import Dicas from '../views/dicas/index';
 import TelaInicial from '../components/TelaInicial/TelaInicial';
+import CadastroUsuario from '../views/telaCadastro/index';
 
 const Router = () => {
   return (
@@ -16,6 +17,7 @@ const Router = () => {
         <Route path='dicas' element={<Dicas />} />
       </Route>
       <Route path="/login" element={<Login />} />
+      <Route path='/register' element={<CadastroUsuario />} />
     </Routes>
   );
 };

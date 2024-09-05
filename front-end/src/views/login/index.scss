@@ -1,5 +1,4 @@
-
-.main-login{
+.main-login {
     display: flex;
     justify-content: right;
     flex-direction: row;
@@ -10,13 +9,13 @@
     background-size: contain;
 }
 
-#content-login{
+#content-login {
     width: 50%;
 }
 
-#content-login{
+#content-login {
     background-color: #fff;
-    
+
     border-radius: 55px 0 0 55px;
     box-shadow: 10px #00000026;
     padding: 30px;
@@ -26,12 +25,6 @@
     align-items: center;
     flex-direction: column;
 
-}
-
-.title > h2 {
-    font-size: 1.5rem !important;
-    margin-bottom: 30px;
-}
 
 .form-login{
     width: 500px;
@@ -39,11 +32,6 @@
     padding: 40px;
     box-shadow: 0px 0px 50px 0px #D9D9D9ED;
     margin-top: 40px;
-
-    border-radius: 20px;
-
-    display: flex;
-    flex-direction: column ;
 }
 
 .button-login{
@@ -55,5 +43,5 @@
 
 .hr-login{
     border: 1px solid #ffb8c5;
-    width:  100% !important;
+    width: 100% !important;
 }

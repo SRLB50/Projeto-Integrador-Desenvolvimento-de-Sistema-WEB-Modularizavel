@@ -39,7 +39,7 @@ const CalendarioSemanal = ({ actualDate, dayOnWeek, month, year, ciclo, periodUs
 
             <div className="body">
                 {
-                    days.map((day, i) => (ciclo == day || period.includes(day)) ? (<BodyDay day={day} ciclo={true} key={i} />) : (<BodyDay day={day} key={i} />))
+                    days.map((day, i) => (ciclo != "" && ciclo == day || ciclo != "" && period.includes(day)) ? (<BodyDay day={day} ciclo={true} key={i} />) : (<BodyDay day={day} key={i} />))
                 }
             </div>
         </section>

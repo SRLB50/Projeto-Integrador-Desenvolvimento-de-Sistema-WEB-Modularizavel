@@ -40,6 +40,8 @@ const Login = () => {
     }
   }
 
+  const redirectRegister = () => navigate("/register")
+  
   return (
     <>
       <div className="main-login">
@@ -63,7 +65,7 @@ const Login = () => {
 
             <hr className="hr-login"/>
 
-            <div className="access" style={{ textAlign: "center" }}>
+            <div className="access" style={{ textAlign: "center", cursor: "pointer" }} onClick={() => redirectRegister()}>
               <h5>Não tem acesso? Então cadastre-se</h5>
             </div>
           </Form>

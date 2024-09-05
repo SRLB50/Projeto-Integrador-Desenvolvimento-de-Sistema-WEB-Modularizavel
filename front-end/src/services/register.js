@@ -1,12 +1,10 @@
-class Ciclo{
-    constructor(id){
-        this.id = id
+class Auth {
+    #body
+    constructor(body) {
+        this.#body = body
     }
 
-    async get(){
-        const body = {
-            userId : this.id
-        }
+    async send() {
 
         const headers = new Headers({
             "Content-Type": "application/json"
@@ -15,23 +13,21 @@ class Ciclo{
         const request = {
             method: "POST",
             headers: headers,
-            body: JSON.stringify(body)
+            body: JSON.stringify(this.#body)
         };
 
-        const saveRequest = new Request(`http://localhost:3000/dias-ciclo`, request);
+        const saveRequest = new Request(`http://localhost:3000/usuarios`, request);
         
         const saveData = await fetch(saveRequest)
             .then(resp => resp.json())
             .then(json => json)
             .catch(error => {
-                return {
-                    response : "erro",
-                    erro: error
-                }               
+                alert("Erro ao realizar login: ", error)
+                throw error.toString()
             })
 
         return saveData
     }
 }
 
-export default Ciclo
+export default Auth
