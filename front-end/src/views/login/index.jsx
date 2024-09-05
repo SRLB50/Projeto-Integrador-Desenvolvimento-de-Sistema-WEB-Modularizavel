@@ -65,7 +65,7 @@ const Login = () => {
 
             <hr />
 
-            <div className="access" style={{ textAlign: "center" }} onClick={() => redirectRegister()}>
+            <div className="access" style={{ textAlign: "center", cursor: "pointer" }} onClick={() => redirectRegister()}>
               <h5>Não tem acesso? Então cadastre-se</h5>
             </div>
           </Form>

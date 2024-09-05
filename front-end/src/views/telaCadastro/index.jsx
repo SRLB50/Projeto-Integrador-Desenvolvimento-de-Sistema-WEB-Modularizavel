@@ -107,7 +107,7 @@ function CadastroUsuario() {
 
           <hr className="line-pink" />
 
-          <div className="access" style={{ textAlign: "center" }}>
+          <div className="access" style={{ textAlign: "center", cursor: "pointer" }}>
             <h5>Já tem acesso? Entre</h5>
           </div>
         </Form>
