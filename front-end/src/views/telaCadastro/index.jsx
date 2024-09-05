@@ -73,6 +73,8 @@ function CadastroUsuario() {
     }
   }
 
+  const redirectLogin = () => navigate("/login")
+
   return (
     <div className="main-register">
       <section id="content-register">
@@ -107,7 +109,7 @@ function CadastroUsuario() {
 
           <hr className="line-pink" />
 
-          <div className="access" style={{ textAlign: "center", cursor: "pointer" }}>
+          <div className="access" style={{ textAlign: "center", cursor: "pointer" }} onClick={() => redirectLogin()}>
             <h5>Já tem acesso? Entre</h5>
           </div>
         </Form>
