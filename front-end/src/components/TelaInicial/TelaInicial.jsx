@@ -32,9 +32,9 @@ const TelaInicial = () => {
         const token = sessionStorage.getItem("token")
         if (token) {
             const decodeToken = jwtDecode(token)
-            const {nome, id, ciclo} = decodeToken
+            const {nome, id} = decodeToken
             
-            setCiclo(ciclo)
+            getCiclo()
             setName(nome)
             setId(id)
         }else{
