@@ -1,0 +1,86 @@
+
+.main-register{
+    display: flex;
+    justify-content: right;
+    flex-direction: row;
+    height: 100vh;
+
+    background-image: url('./../../assets/woman-register.png');
+    background-position: top left;
+    background-size: 43%;
+}
+
+#content-register{
+    width: 60%;
+}
+
+#content-register{
+    background-color: #fff;
+    
+    border-radius: 55px 0 0 55px;
+    box-shadow: 10px #00000026;
+    padding: 30px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.title > h2 {
+    font-size: 1.5rem !important;
+    margin-bottom: 30px;
+}
+
+.form-register{
+    width: 500px;
+    
+    padding: 40px;
+    box-shadow: 0px 0px 50px 0px #D9D9D9ED;
+    margin-top: 40px;
+
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column ;
+    
+    .back{
+        margin-bottom: 20px;
+    }
+
+    .button-send{
+        background-color: #FF869C !important;
+        border: none !important;
+        width: 100% !important;
+        margin-top: 20px;
+    }
+
+    .input-div{
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+
+        .next-field{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            border: none;
+            border-radius: 100%;
+
+            width: 35px;
+            height: 30px;
+
+            background-color: #FF869C;
+            color: #FFF;
+
+            font-size: 1.5rem;
+        }
+    }
+}
+
+.line-pink{
+    border: 1px solid #ffb8c5;
+    width:  100% !important;
+}
