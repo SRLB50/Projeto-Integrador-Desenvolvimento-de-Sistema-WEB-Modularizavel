@@ -7,10 +7,12 @@ const CalendarioSemanal = ({ actualDate, dayOnWeek, month, year, ciclo, periodUs
     const [period, setPeriod] = useState([])
     
     useEffect(() => {
-        const instance = new CountCalendar(dayOnWeek, actualDate, month, year)
-        setDays(instance.days())
-
-        setPeriod(calcNextPeriod())
+        if (periodUser != "") {
+            const instance = new CountCalendar(dayOnWeek, actualDate, month, year)
+            setDays(instance.days())
+    
+            setPeriod(calcNextPeriod())
+        }
     }, [periodUser])
 
     const calcNextPeriod = () => {
@@ -39,7 +41,7 @@ const CalendarioSemanal = ({ actualDate, dayOnWeek, month, year, ciclo, periodUs
 
             <div className="body">
                 {
-                    days.map((day, i) => (ciclo == day || period.includes(day)) ? (<BodyDay day={day} ciclo={true} key={i} />) : (<BodyDay day={day} key={i} />))
+                    days.map((day, i) => (ciclo != "" && ciclo == day || ciclo != "" && period.includes(day)) ? (<BodyDay day={day} ciclo={true} key={i} />) : (<BodyDay day={day} key={i} />))
                 }
             </div>
         </section>

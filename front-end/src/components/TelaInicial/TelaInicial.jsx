@@ -23,6 +23,7 @@ const TelaInicial = () => {
     const [name, setName] = useState()
     const [id, setId] = useState()
     const [ciclo, setCiclo] = useState(0)
+    const [errorCiclo, setErrorCiclo] = useState(false)
 
     useEffect(() => {
         dateComponent()
@@ -61,6 +62,11 @@ const TelaInicial = () => {
             
         const ciclo = await requestCiclo.get()
 
+        if (ciclo?.response) {
+            setErrorCiclo(ciclo.response)
+
+            return ciclo.response
+        }
         setCiclo(ciclo.dias)
     }
 
@@ -75,20 +81,21 @@ const TelaInicial = () => {
                     <span style={{fontWeight: 700}}>{day} de {formattedMonth} de <span className="pink-text">{year}</span></span>
 
                     <div className="dias-menstruacao">
-                        {
-                            ciclo > 0 
-                            ? 
-                                (<span>Faltam <span className="circle">{ciclo}</span> dias para sua menstruação</span> ) 
-                            : 
-                                ciclo < 0 
-                                    ? <h5 className="pink-text"> {Math.abs(ciclo)} dia(s) da sua menstruação inicial!</h5> 
-                                    : <h5 className="pink-text">Sua menstruação se inicia hoje!</h5> 
+                        {  !errorCiclo ?
+                                ciclo > 0 
+                                ? 
+                                    (<span>Faltam <span className="circle">{ciclo}</span> dias para sua menstruação</span> ) 
+                                : 
+                                    ciclo < 0 
+                                        ? <h5 className="pink-text"> {Math.abs(ciclo)} dia(s) da sua menstruação inicial!</h5> 
+                                        : <h5 className="pink-text">Sua menstruação se inicia hoje!</h5> 
+                            : <h5>Ciclo não cadastrado!</h5> 
                         }
                     </div>
                 </div>
 
                 <div className="body-calendario">
-                    <CalendarioSemanal actualDate={day} dayOnWeek={dayWeek} month={month} year={year} ciclo={(ciclo + day)} periodUser={ciclo} />
+                    <CalendarioSemanal actualDate={day} dayOnWeek={dayWeek} month={month} year={year} ciclo={!errorCiclo ? (ciclo + day) : ""} periodUser={!errorCiclo ? ciclo : ""} />
                 </div>
             </div>
 

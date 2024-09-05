@@ -5,7 +5,7 @@ class Ciclo{
 
     async get(){
         const body = {
-            id : this.id
+            userId : this.id
         }
 
         const headers = new Headers({
