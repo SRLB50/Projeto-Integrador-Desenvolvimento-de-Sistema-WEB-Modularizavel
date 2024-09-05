@@ -6,6 +6,8 @@ import {Button} from 'reactstrap'
 import CalendarioComponent from '../../components/CalendarioComponent/index'
 import ModalAdicionarSintoma from '../../components/Modais/ModalAdicionarSintomas.jsx';
 import ModalVisualizarSintoma from '../../components/Modais/ModalVisualizarSintomas.jsx';
+import ModalAtraso from '../../components/Modais/ModalAtraso.jsx';
+import ModalLembrete from '../../components/Modais/ModalLembrete.jsx';
 import './index.scss'
 
 import StopWhite from '../../assets/stop-white.svg'
@@ -21,11 +23,16 @@ const Calendario = () => {
     const [firstCycle, setFirstCycle] = useState(false)
     const [nextCycle, setNextCycle] = useState()
     const [events, setEvents] = useState([])
+    const [initedCycle, setInitedCycle] = useState()
+    const [initedPregnancy, setInitedPregnancy] = useState()
+    const [currentPregnancy, setCurrentPregnancy] = useState()
 
     //modais
     const [modalAdicionarOpen, setModalAdicionarOpen] = useState(false)
     const [modalVisualizarOpen, setModalVisualizarOpen] = useState(false)
+    const [modalAtraso, setModalAtraso] = useState(false)
     const [sintomaEditando, setSintomaEditando] = useState('')
+    
 
     const toggleAdicionar = () => setModalAdicionarOpen(!modalAdicionarOpen)
     const toggleVisualizar = () => setModalVisualizarOpen(!modalVisualizarOpen)
@@ -74,30 +81,33 @@ const Calendario = () => {
     }
 
     useEffect(() => {
-
       //Retorna o próximo ciclo
       axios.post(`http://localhost:3000/dias-ciclo`, {userId: 1} )
       .then(response => {
         setDaysUntilNextCycle(response?.data?.dias) 
         setNextCycle(response?.data?.data)
+      }).catch(error => {
+        if(error?.response?.data?.response == "Ciclo menstrual não encontrado!") {
+          setFirstCycle(true)
+        }
       })
+    },[initedCycle])
 
+    useEffect(() => {
       //Retorna os ciclos
-      const getCycle = axios.get(`http://localhost:3000/ciclos`, {params: {userId: 1}} )
+      const getCycle = axios.get(`http://localhost:3000/ciclos`, {params: {userId: 29}} )
 
       //Retorna os sintomas
-      const getSympton = axios.get(`http://localhost:3000/sintomas`, {params: {userId: 1}} )
+      const getSympton = axios.get(`http://localhost:3000/sintomas`, {params: {userId: 29}} )
 
       //Retorna os sintomas
-      const getPregnancy = axios.get(`http://localhost:3000/gravidezes`, {params: {userId: 1}} )
+      const getPregnancy = axios.get(`http://localhost:3000/gravidezes`, {params: {userId: 29}} )
         
       axios.all([getCycle, getSympton, getPregnancy])
         .then(axios.spread((cycleResponse, symptonResponse, pregnancyResponse) => {
           let responsesFormated = []
 
-          if(cycleResponse?.data?.message == "Nenhum ciclo registrado") {
-            setFirstCycle(true)
-          } else {
+          if(cycleResponse) {
             //Inicia a estrutura de eventos para renderização no componente de calendário
             cycleResponse?.data?.forEach(item => {
               const dataArray = handleGetDatesBetween(item.inicio, item.fim)
@@ -113,42 +123,46 @@ const Calendario = () => {
                 ))
             })
           }
+          
+          if(symptonResponse) {
+            //Adiciona os dias de eventos de sintomas já cadastrados
+            symptonResponse?.data?.forEach(item => {
+              const existingIndex = responsesFormated.findIndex(element => element.data === item.data)
+              
+              if (existingIndex !== -1) {
+                responsesFormated[existingIndex].sintoma = true
+              } else {
+                responsesFormated.push({
+                  mestruacao: false,
+                  sintoma: true,
+                  gravidez: false,
+                  data: item.data
+                })
+              }
+            })
+          }
+ 
+          if(pregnancyResponse.data.length > 0) {
+            //Adiciona os dias de eventos de gravidez já cadastrados
+            setCurrentPregnancy(pregnancyResponse.data[0])
+            const getDaysOfPregnancy = handleGetDatesBetween(pregnancyResponse.data[0].inicio, pregnancyResponse.data[0].fim)
 
-          //Adiciona os dias de eventos de sintomas já cadastrados
-          symptonResponse?.data?.forEach(item => {
-            const existingIndex = responsesFormated.findIndex(element => element.data === item.data)
-            
-            if (existingIndex !== -1) {
-              responsesFormated[existingIndex].sintoma = true
-            } else {
-              responsesFormated.push({
-                mestruacao: false,
-                sintoma: true,
-                gravidez: false,
-                data: item.data
-              })
-            }
-          })
-
-          //Adiciona os dias de eventos de gravidez já cadastrados
-
-          const getDaysOfPregnancy = handleGetDatesBetween(pregnancyResponse.data[0].inicio, pregnancyResponse.data[0].fim)
-
-          getDaysOfPregnancy?.forEach(item => {
-            const existingIndex = responsesFormated.findIndex(element => element.data === item);
-            
-            if (existingIndex !== -1) {
-              responsesFormated[existingIndex].gravidez = true;
-            } else {
-              responsesFormated.push({
-                mestruacao: false,
-                sintoma: false,
-                gravidez: true,
-                data: item.toLocaleDateString('pt-BR'),
-                gravidezFim: pregnancyResponse.data[0].fim == item,
-              });
-            }
-          });
+            getDaysOfPregnancy?.forEach(item => {
+              const existingIndex = responsesFormated.findIndex(element => element.data === item);
+              
+              if (existingIndex !== -1) {
+                responsesFormated[existingIndex].gravidez = true;
+              } else {
+                responsesFormated.push({
+                  mestruacao: false,
+                  sintoma: false,
+                  gravidez: true,
+                  data: item.toLocaleDateString('pt-BR'),
+                  gravidezFim: pregnancyResponse.data[0].fim == item,
+                });
+              }
+            });
+          }
 
           setEvents(responsesFormated)
 
@@ -157,45 +171,105 @@ const Calendario = () => {
         });
 
       return () => {}
-    }, [])
-
-    const handleInitCycle = () => {
-      //Retorna os ciclos
-      axios.post(`http://localhost:3000/iniciar-ciclo`, {userId: 1} )
-      .then(response => {
-        console.log(response, 'response')    
-      })
-    }
+    }, [initedPregnancy])
 
     // Inicia a gravidez
     const handleStartPregnancy = () => {
-      axios.post(`http://localhost:3000/iniciar-gravidez`, {userId: 1, dataInicio:"28/08/2024"} )
+      axios.post(`http://localhost:3000/iniciar-gravidez`, {userId: 29, dataInicio:daySelected} )
       .then((response) => {
-        const getDaysOfPregnancy = handleGetDatesBetween(new Date().toLocaleDateString('pt-BR'), response.data.dataFim)
-        const responsesFormated = [...events]
-
-        getDaysOfPregnancy?.forEach(item => {
-          const existingIndex = responsesFormated.findIndex(element => element.data === item);
-          
-          if (existingIndex !== -1) {
-            responsesFormated[existingIndex].gravidez = true;
-          } else {
-            responsesFormated.push({
-              mestruacao: false,
-              sintoma: false,
-              gravidez: true,
-              data: item.toLocaleDateString('pt-BR'),
-              gravidezFim: response.data.dataFim == item,
-            });
-          }
-        });
-
-        setEvents(responsesFormated)
+        setInitedPregnancy(response.data)
       }).catch(error => {
         console.log(error)
       })
     }
 
+    // Inicia a gravidez
+    const handleStopPregnancy = () => {
+      axios.put(`http://localhost:3000/atualizar-gravidez`, {userId: 29, data:daySelected, id: currentPregnancy.id} )
+      .then((response) => {
+        setInitedPregnancy("")
+      }).catch(error => {
+        console.log(error)
+      })
+    }
+
+    const handleInitCycle = () => {
+      //Inicia o ciclo
+      axios.post(`http://localhost:3000/iniciar-ciclo`, {userId: 29, inicio:daySelected} )
+      .then(response => { 
+        setInitedCycle(response.data)
+        let responsesFormated = [...events]
+
+          const existingIndex = responsesFormated.findIndex(element => element.data === response.data.inicio)
+          
+          if (existingIndex !== -1) {
+            responsesFormated[existingIndex].sintoma = true
+          } else {
+            responsesFormated.push({
+              mestruacao: true,
+              sintoma: false,
+              gravidez: false,
+              data: response.data.inicio
+            })
+          }
+
+        setEvents(responsesFormated)
+  
+      }).catch(error => {
+        console.log(error, 'error')
+      })
+    }
+
+    const handleEndCycle = () => {
+       //Inicia o ciclo
+       axios.put(`http://localhost:3000/encerrar-ciclo`, {userId: 29, dataFim:daySelected} )
+       .then(response => { 
+         let responsesFormated = [...events]
+
+          const dataArray = handleGetDatesBetween(response.data.inicio, response.data.fim)
+
+          dataArray.map(data => {
+
+            const existingIndex = responsesFormated.findIndex(element => element.data === data.toLocaleDateString('pt-BR'));
+
+            if (existingIndex !== -1) {
+              responsesFormated[existingIndex].sintoma = true
+            } else {
+              responsesFormated.push(
+                {
+                  mestruacao: true,
+                  sintoma: false,
+                  gravidez: false,
+                  data: data.toLocaleDateString('pt-BR')
+                }
+              )
+            }    
+          })
+    
+         setEvents(responsesFormated)
+         setInitedCycle()
+   
+       }).catch(error => {
+         console.log(error, 'error')
+       })
+    }
+
+    const handlePregnancy = () => {
+      if(currentPregnancy) {
+        handleStopPregnancy()
+      } else {
+        handleStartPregnancy()
+      }
+    }
+
+    const handleCycle = () => {
+      if(initedCycle) {
+        handleEndCycle()
+      } else {
+        handleInitCycle()
+      }
+    }
+    
     const handleCallSintomaModal = () => {
       if(events.some(item => item?.data == daySelected && item?.sintoma)) {
         toggleVisualizar()
@@ -206,6 +280,15 @@ const Calendario = () => {
 
     return (
       <>
+
+        <ModalAtraso 
+          daysLate={daysUntilNextCycle}
+          modalAtraso={modalAtraso}
+          setModalAtraso={setModalAtraso}
+        />
+
+        <ModalLembrete /> 
+
         <ModalAdicionarSintoma
           isOpen={modalAdicionarOpen}
           toggle={toggleAdicionar}
@@ -247,7 +330,7 @@ const Calendario = () => {
                   </div>
                   
                   <div className="radio-phrase">
-                    <input type="radio" id="off" name="cycle" value="Não"/>
+                    <input type="radio" id="off" name="cycle" value="Não" onClick={() => {setModalAtraso(true)}}/>
                     <label for="off" className="radio-phrase-label">Não</label>
                   </div>
                 </div>
@@ -262,10 +345,15 @@ const Calendario = () => {
             <div className="flex-buttons">
               <Button 
                 className="action-button action-button-filled"
-                onClick={() => handleInitCycle()}
+                onClick={() => handleCycle()}
                 disabled={daySelected && events?.some(item => item?.data == daySelected && item.gravidez)}
               > 
-                <img src={Play} />
+                {
+                  initedCycle ? 
+                  <img src={StopWhite} />
+                  :
+                  <img src={Play} />
+                }
                 Menstruação 
               </Button>
               <Button 
@@ -284,10 +372,15 @@ const Calendario = () => {
             </div>
             <Button 
               className="action-button action-button-border"
-              onClick={() => handleStartPregnancy()}
-              disabled={!daySelected || (new Date(formatToAmericanDate(daySelected)) < new Date() )}
+              onClick={() => handlePregnancy()}
+              disabled={!daySelected}
             > 
+            {
+              daySelected && events?.some(item => item?.data == daySelected && item.gravidez) ?
+              <img src={NegativePink} />
+              :
               <img src={PlusPink} />
+            }
               Gravidez 
             </Button>
           </div>

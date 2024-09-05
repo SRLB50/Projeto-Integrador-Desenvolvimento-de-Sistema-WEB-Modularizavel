@@ -15,7 +15,7 @@ const ModalVisualizarSintoma = ({ isOpen, toggle, onEdit, atualizarSintoma, dayS
 
   useEffect(() => {
     if (daySelected && isOpen) {
-      axios.get(`http://localhost:3000/sintomas`, {params: {userId: 1}} )
+      axios.get(`http://localhost:3000/sintomas`, {params: {userId: 29}} )
       .then(response => {
         let itemSelected; 
         response.data.forEach(item => {

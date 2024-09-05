@@ -78,6 +78,15 @@ const Calendar = ({ daySelected, setDaySelected, nextCycle, events }) => {
       .join(' ');
   };
 
+  const handleStandartEvent = (day) => {
+    const referenceDate = `${String(day).length == 1 ? "0" : ""}${day}${currentDate.toLocaleDateString("pt-BR").substring(2)}`
+    const initialDay = new Date().toLocaleDateString("pt-BR")
+
+    if(referenceDate === initialDay) {
+      return 'standart-day'
+    }
+  }
+
   return (
     <div className="container-calendar-structure">
       <img
@@ -108,7 +117,10 @@ const Calendar = ({ daySelected, setDaySelected, nextCycle, events }) => {
                     className={day ? "standart-cell" : "empty-cell"}
                   >
                     <span
-                      className={`cursor-pointer ${events?.length > 0 && day && handleImplementEvent(day)} ${daySelected?.slice(0, 2) == day ? 'clicked' : ''}`}
+                      className={`cursor-pointer 
+                        ${events?.length > 0 && day ? handleImplementEvent(day) : handleStandartEvent(day)} 
+                        ${daySelected?.slice(0, 2) == day ? 'clicked' : ''}
+                      `}
                       onClick={() => handleDayClick(day)}
                     >
                       {day}

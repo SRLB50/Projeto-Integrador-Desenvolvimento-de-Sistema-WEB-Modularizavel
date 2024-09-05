@@ -21,7 +21,7 @@ const ModalAdicionarSintoma = ({ isOpen, toggle, sintoma, daySelected, setEvents
   const handleSave = () => {
     if(sintomaTexto && !sintoma) {
       axios.post(`http://localhost:3000/sintomas`, 
-        {userId: 1, data: daySelected, descricao: sintomaTexto } 
+        {userId: 29, data: daySelected, descricao: sintomaTexto } 
       )
       .then((response) => {
         alert('Sintoma adicionado com sucesso!')
