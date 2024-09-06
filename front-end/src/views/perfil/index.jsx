@@ -1,56 +1,49 @@
-/* eslint-disable */
-import { react, useState } from "react";
-import axios from "axios";
-import InputElement from "../../components/FormElements/Input";
-import { Card, CardBody } from "reactstrap";
-import './index.scss'
+import "./index.scss"
+import { Form, FormGroup, Label, Input } from "reactstrap"
+import { jwtDecode } from "jwt-decode"
+import { useEffect, useState } from "react"
+
 
 const Perfil = () => {
-  const [email, setEmail] = useState("");
-	const [nome, setNome] = useState("");
-	const [sobrenome, setSobrenome] = useState("");
-	const [data, setData] = useState("");
+
+  const [email, setEmail] = useState("")
+  const [name, setName] = useState("")
+  const [birthday, setBirthday] = useState("")
+
+  useEffect(() => {
+    const user = sessionStorage.getItem("token")
+    const { nome, email, data_nascimento } = jwtDecode(user)
+
+    setName(nome)
+    setEmail(email)
+    setBirthday(formattedDate(data_nascimento))
+
+  }, [])
+
+  const formattedDate = (date) => {
+    const [year, month, day] = date.split("-")
+
+    return day + "/" + month + "/" + year
+  }
 
   return (
-		<div className="perfil-container">
-			 <Card className="perfil-card">
-				<CardBody className="perfil-card-body">
-					<InputElement
-						label={"E-mail"}
-						type="text"
-						id="input-email"
-						disabled={true}
-						value={email}
-						setValue={setEmail}
-					/>
-					<InputElement
-						label={"Nome"}
-						type="text"
-						id="input-nome"
-						disabled={true}
-						value={nome}
-						setValue={setNome}
-					/>
-					<InputElement
-						label={"Sobrenome"}
-						type="text"
-						id="input-sobrenome"
-						disabled={true}
-						value={sobrenome}
-						setValue={setSobrenome}
-					/>
-					<InputElement
-						label={"Data de nascimento"}
-						type="text"
-						id="input-data"
-						disabled={true}
-						value={data}
-						setValue={setData}
-					/>
-				</CardBody>
-			</Card>
-		</div>
-  );
-};
+    <section id="perfil">
+      <Form className="perfil-form">
+        <FormGroup>
+          <Label for="nome">Nome</Label>
+          <Input id="nome" name="nome" type="text" readOnly value={name} />
+        </FormGroup>
+        <FormGroup>
+          <Label for="email">E-mail</Label>
+          <Input id="email" name="email" type="email" readOnly value={email} />
+        </FormGroup>
+        <FormGroup>
+          <Label for="data_nascimento">Data de Nascimento</Label>
+          <Input id="data_nascimento" name="data_nascimento" type="text" readOnly value={birthday} />
+        </FormGroup>
+      </Form>
+    </section>
+  )
+}
 
-export default Perfil;
+export default Perfil
