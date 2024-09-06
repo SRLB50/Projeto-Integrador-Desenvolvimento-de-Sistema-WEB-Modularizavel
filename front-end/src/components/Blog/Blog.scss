@@ -1,0 +1,25 @@
+#blog{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    
+    .body{
+        .image{
+            img {
+                width: 100%;
+                border-radius: 20px 20px 0 0;
+                margin: 25px 0;
+            }
+        }
+
+        .body-text{
+
+            p{
+                text-align: justify;
+                margin-bottom: 20px;
+            }
+
+        }
+    }
+}
