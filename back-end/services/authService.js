@@ -28,6 +28,7 @@ const login = async (request, reply) => {
             reply.status(400).send({ error: "Usuário não encontrado!" })
         }
     } catch (error) {
+        console.log(error)
         reply.status(500).send({ erro: error.toString() })
     }
 }
@@ -39,7 +40,8 @@ class LoginUser {
     }
 
     #dataUser() {
-        const nextCiclo = menstruacao.getProxCiclo(String(this.ciclo[0].fim))
+        
+        const nextCiclo = this.ciclo[0] ? menstruacao.getProxCiclo(String(this.ciclo[0].fim)) : ""
 
         const { nome, email, id, data_nascimento } = this.user[0]
 
