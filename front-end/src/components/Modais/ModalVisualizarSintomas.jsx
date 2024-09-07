@@ -8,14 +8,14 @@ import { useState } from 'react';
 import './modais.scss';
 
 // eslint-disable-next-line react/prop-types
-const ModalVisualizarSintoma = ({ isOpen, toggle, onEdit, atualizarSintoma, daySelected, setEvents }) => {
+const ModalVisualizarSintoma = ({ isOpen, toggle, onEdit, atualizarSintoma, daySelected, userId, setEvents }) => {
   const [modalConfirmOpen, setModalConfirmOpen] = React.useState(false);
   const [modalContent, setModalContent] = useState("")
   const toggleConfirm = () => setModalConfirmOpen(!modalConfirmOpen);
 
   useEffect(() => {
     if (daySelected && isOpen) {
-      axios.get(`http://localhost:3000/sintomas`, {params: {userId: 29}} )
+      axios.get(`http://localhost:3000/sintomas`, {params: {userId: userId}} )
       .then(response => {
         let itemSelected; 
         response.data.forEach(item => {

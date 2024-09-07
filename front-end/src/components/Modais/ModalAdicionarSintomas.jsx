@@ -5,7 +5,7 @@ import { Modal, ModalHeader, ModalBody, ModalFooter, Button, Input } from 'react
 import './modais.scss';
 
 // eslint-disable-next-line react/prop-types
-const ModalAdicionarSintoma = ({ isOpen, toggle, sintoma, daySelected, setEvents }) => {
+const ModalAdicionarSintoma = ({ isOpen, toggle, sintoma, daySelected, userId, setEvents }) => {
   const [sintomaTexto, setSintomaTexto] = useState('');
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const ModalAdicionarSintoma = ({ isOpen, toggle, sintoma, daySelected, setEvents
   const handleSave = () => {
     if(sintomaTexto && !sintoma) {
       axios.post(`http://localhost:3000/sintomas`, 
-        {userId: 29, data: daySelected, descricao: sintomaTexto } 
+        {userId: userId, data: daySelected, descricao: sintomaTexto } 
       )
       .then((response) => {
         alert('Sintoma adicionado com sucesso!')

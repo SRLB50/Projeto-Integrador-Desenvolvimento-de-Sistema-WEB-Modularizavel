@@ -1,6 +1,7 @@
 
 /* eslint-disable */
 import { react,  useState, useEffect } from "react"
+import { jwtDecode } from "jwt-decode"
 import axios from 'axios'
 import {Button} from 'reactstrap'
 import CalendarioComponent from '../../components/CalendarioComponent/index'
@@ -32,7 +33,10 @@ const Calendario = () => {
     const [modalVisualizarOpen, setModalVisualizarOpen] = useState(false)
     const [modalAtraso, setModalAtraso] = useState(false)
     const [sintomaEditando, setSintomaEditando] = useState('')
-    
+
+    const user = sessionStorage.getItem("token")
+
+    const { id, email, nome, senha} = jwtDecode(user)
 
     const toggleAdicionar = () => setModalAdicionarOpen(!modalAdicionarOpen)
     const toggleVisualizar = () => setModalVisualizarOpen(!modalVisualizarOpen)
@@ -82,7 +86,7 @@ const Calendario = () => {
 
     useEffect(() => {
       //Retorna o próximo ciclo
-      axios.post(`http://localhost:3000/dias-ciclo`, {userId: 1} )
+      axios.post(`http://localhost:3000/dias-ciclo`, {userId: id} )
       .then(response => {
         setDaysUntilNextCycle(response?.data?.dias) 
         setNextCycle(response?.data?.data)
@@ -95,19 +99,19 @@ const Calendario = () => {
 
     useEffect(() => {
       //Retorna os ciclos
-      const getCycle = axios.get(`http://localhost:3000/ciclos`, {params: {userId: 29}} )
+      const getCycle = axios.get(`http://localhost:3000/ciclos`, {params: {userId: id}} )
 
       //Retorna os sintomas
-      const getSympton = axios.get(`http://localhost:3000/sintomas`, {params: {userId: 29}} )
+      const getSympton = axios.get(`http://localhost:3000/sintomas`, {params: {userId: id}} )
 
       //Retorna os sintomas
-      const getPregnancy = axios.get(`http://localhost:3000/gravidezes`, {params: {userId: 29}} )
+      const getPregnancy = axios.get(`http://localhost:3000/gravidezes`, {params: {userId: id}} )
         
       axios.all([getCycle, getSympton, getPregnancy])
         .then(axios.spread((cycleResponse, symptonResponse, pregnancyResponse) => {
           let responsesFormated = []
 
-          if(cycleResponse) {
+          if(cycleResponse?.data?.length > 0) {
             //Inicia a estrutura de eventos para renderização no componente de calendário
             cycleResponse?.data?.forEach(item => {
               const dataArray = handleGetDatesBetween(item.inicio, item.fim)
@@ -123,8 +127,8 @@ const Calendario = () => {
                 ))
             })
           }
-          
-          if(symptonResponse) {
+   
+          if(symptonResponse?.data?.length > 0) {
             //Adiciona os dias de eventos de sintomas já cadastrados
             symptonResponse?.data?.forEach(item => {
               const existingIndex = responsesFormated.findIndex(element => element.data === item.data)
@@ -164,7 +168,7 @@ const Calendario = () => {
             });
           }
 
-          setEvents(responsesFormated)
+          setEvents([...responsesFormated])
 
         })).catch(error => {
           console.error('Erro nas requisições:', error);
@@ -175,7 +179,7 @@ const Calendario = () => {
 
     // Inicia a gravidez
     const handleStartPregnancy = () => {
-      axios.post(`http://localhost:3000/iniciar-gravidez`, {userId: 29, dataInicio:daySelected} )
+      axios.post(`http://localhost:3000/iniciar-gravidez`, {userId: id, dataInicio:daySelected} )
       .then((response) => {
         setInitedPregnancy(response.data)
       }).catch(error => {
@@ -185,7 +189,7 @@ const Calendario = () => {
 
     // Inicia a gravidez
     const handleStopPregnancy = () => {
-      axios.put(`http://localhost:3000/atualizar-gravidez`, {userId: 29, data:daySelected, id: currentPregnancy.id} )
+      axios.put(`http://localhost:3000/atualizar-gravidez`, {userId: id, data:daySelected, id: currentPregnancy.id} )
       .then((response) => {
         setInitedPregnancy("")
       }).catch(error => {
@@ -195,7 +199,7 @@ const Calendario = () => {
 
     const handleInitCycle = () => {
       //Inicia o ciclo
-      axios.post(`http://localhost:3000/iniciar-ciclo`, {userId: 29, inicio:daySelected} )
+      axios.post(`http://localhost:3000/iniciar-ciclo`, {userId: id, inicio:daySelected} )
       .then(response => { 
         setInitedCycle(response.data)
         let responsesFormated = [...events]
@@ -222,7 +226,7 @@ const Calendario = () => {
 
     const handleEndCycle = () => {
        //Inicia o ciclo
-       axios.put(`http://localhost:3000/encerrar-ciclo`, {userId: 29, dataFim:daySelected} )
+       axios.put(`http://localhost:3000/encerrar-ciclo`, {userId: id, dataFim:daySelected} )
        .then(response => { 
          let responsesFormated = [...events]
 
@@ -295,6 +299,7 @@ const Calendario = () => {
           sintoma={sintomaEditando}
           daySelected={daySelected}
           setEvents={setEvents}
+          userId={id}
         />
 
         <ModalVisualizarSintoma
@@ -304,11 +309,12 @@ const Calendario = () => {
           atualizarSintoma={setSintomaEditando}
           daySelected={daySelected}
           setEvents={setEvents}
+          userId={id}
         />
 
         <div className="container-calendar-screen">
           <div className="welcome-user-container">
-            <h2 className="main-title">Como está o seu cíclo hoje, <span className="bold-phrase prominence-word">Marcela</span>?</h2>
+            <h2 className="main-title">Como está o seu cíclo hoje, <span className="bold-phrase prominence-word">{email}</span>?</h2>
             <div className="counter-day-container">
               <h3 className="bold-phrase">{day} de {month} <span className="prominence-word">{year}</span></h3>
               {
