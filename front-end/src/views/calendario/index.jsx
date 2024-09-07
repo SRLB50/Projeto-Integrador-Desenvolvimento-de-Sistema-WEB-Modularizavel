@@ -314,7 +314,7 @@ const Calendario = () => {
 
         <div className="container-calendar-screen">
           <div className="welcome-user-container">
-            <h2 className="main-title">Como está o seu cíclo hoje, <span className="bold-phrase prominence-word">{email}</span>?</h2>
+            <h2 className="main-title">Como está o seu cíclo hoje, <span className="bold-phrase prominence-word">{nome}</span>?</h2>
             <div className="counter-day-container">
               <h3 className="bold-phrase">{day} de {month} <span className="prominence-word">{year}</span></h3>
               {

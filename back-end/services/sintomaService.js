@@ -34,18 +34,16 @@ const getSintomaByIdUser = async (request, reply) => {
 	  });
   
 	  if (sintomas.length > 0) {
-		console.log(sintomas, 'anteeees')
 		const sintomaFormatado = sintomas.map(sintoma => { 
 			const sintomaData = sintoma.get()
 			sintomaData.data = formatedDateToClient(sintoma.data)
 			return sintomaData
 		})
 
-		console.log(sintomaFormatado, 'depppppos')
 		reply.send(sintomaFormatado)
 		return
 	  } else {
-		reply.status(404).send({ erro: "Nenhum sintoma encontrado para o usuário especificado!" });
+		reply.status(200).send({ erro: "Nenhum sintoma encontrado para o usuário especificado!" });
 	  }
 	} catch (err) {
 	  reply.status(500).send({ erro: 'Erro ao obter sintomas.', details: err.message });
